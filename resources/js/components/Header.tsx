@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   const routesByRole = {
     admin: {
       home: route('admin.home'),
-      influencers: route('admin.home'),
+      influencers: route('admin.influencers'),
       brands: route('admin.home'),
       pricing: route('admin.home'),
       about: route('admin.home'),
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
     },
     influencer: {
       home: route('influencer.home'),
-      influencers: route('influencer.home'),
+      influencers: route('influencer.influencers'),
       brands: route('influencer.home'),
       pricing: route('influencer.home'),
       about: route('influencer.home'),
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
     },
     brand: {
       home: route('brand.home'),
-      influencers: route('brand.home'),
+      influencers: route('brand.influencers'),
       brands: route('brand.home'),
       pricing: route('brand.home'),
       about: route('brand.home'),
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
     },
     guest: {
       home: route('home'),
-      influencers: route('home'),
+      influencers: route('influencers'),
       brands: route('home'),
       pricing: route('home'),
       about: route('home'),
@@ -126,7 +126,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 href="/login"
-                className="bg-[var(--color-cocollab)] text-white text-md px-4 py-1.5 rounded-lg font-medium transition-all duration-300 hover:opacity-90"
+                className="bg-[var(--color-cocollab)] border border-[var(--color-cocollab)] text-white text-md px-4 py-1.5 rounded-lg font-medium transition-all duration-300 hover:opacity-90"
                 style={{ boxShadow: '0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833' }}
               >
                 Sign in
