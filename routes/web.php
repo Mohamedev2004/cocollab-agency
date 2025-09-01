@@ -112,6 +112,11 @@ Route::prefix('influencer')->middleware(['auth', 'influencer', 'countdown'])->gr
             return Inertia::render('influencer/dashboard');
         })->name('influencer.dashboard');
 
+
+        Route::get('/mails', function () {
+            return Inertia::render('influencer/mails');
+        })->name('influencer.mails');
+
         Route::get('/users/{user}/activity', [UserActivityController::class, 'getActivity'])->name('influencer.activity');
         Route::get('/users/{user}/years', [UserActivityController::class, 'getAvailableYears'])->name('influencer.activity.years');
     });

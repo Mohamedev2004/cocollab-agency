@@ -54,7 +54,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
   } else if (user.role === 'influencer') {
     mainNavItems = [
       { title: 'Dashboard', href: route('influencer.dashboard'), icon: LayoutGrid },
-      { title: 'Campaigns', href: route('influencer.home'), icon: Sticker },
+      { title: 'Mails', href: route('influencer.mails'), icon: Sticker },
       { title: 'Messages', href: route('influencer.home'), icon: MessageSquareText },
     ];
   } else if (user.role === 'brand') {
