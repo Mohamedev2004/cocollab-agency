@@ -31,8 +31,8 @@ const Header: React.FC = () => {
       home: route('admin.home'),
       influencers: route('admin.influencers'),
       brands: route('admin.brands'),
-      pricing: route('admin.home'),
-      about: route('admin.home'),
+      pricing: route('admin.home') + '#pricing',
+      press: route('admin.press'),
       contact: route('admin.home'),
       dashboard: route('dashboard'),
     },
@@ -40,8 +40,8 @@ const Header: React.FC = () => {
       home: route('influencer.home'),
       influencers: route('influencer.influencers'),
       brands: route('influencer.brands'),
-      pricing: route('influencer.home'),
-      about: route('influencer.home'),
+      pricing: route('influencer.home') + '#pricing',
+      press: route('influencer.press'),
       contact: route('influencer.home'),
       dashboard: route('influencer.dashboard'),
     },
@@ -49,8 +49,8 @@ const Header: React.FC = () => {
       home: route('brand.home'),
       influencers: route('brand.influencers'),
       brands: route('brand.brands'),
-      pricing: route('brand.home'),
-      about: route('brand.home'),
+      pricing: route('brand.home') + '#pricing',
+      press: route('brand.press'),
       contact: route('brand.home'),
       dashboard: route('brand.home'),
     },
@@ -58,8 +58,8 @@ const Header: React.FC = () => {
       home: route('home'),
       influencers: route('influencers'),
       brands: route('brands'),
-      pricing: route('home'),
-      about: route('home'),
+      pricing: route('home') + '#pricing',
+      press: route('press'),
       contact: route('contact'),
       dashboard: route('home'),
     },
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
           <Link href={currentRoutes.influencers} className="px-4 py-1.5 text-sm rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Influencers</Link>
           <Link href={currentRoutes.brands} className="px-4 py-1.5 text-sm rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Brands</Link>
           <Link href={currentRoutes.pricing} className="px-4 py-1.5 text-sm rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Pricing</Link>
-          <Link href={currentRoutes.about} className="px-4 py-1.5 text-sm rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">About us</Link>
+          <Link href={currentRoutes.press} className="px-4 py-1.5 text-sm rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Press</Link>
           <Link href={currentRoutes.contact} className="px-4 py-1.5 text-sm rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Contact</Link>
         </nav>
 
@@ -148,7 +148,7 @@ const Header: React.FC = () => {
           <Link href={currentRoutes.influencers} className="px-4 py-1.5 w-full text-center rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Influencers</Link>
           <Link href={currentRoutes.brands} className="px-4 py-1.5 w-full text-center rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Brands</Link>
           <Link href={currentRoutes.pricing} className="px-4 py-1.5 w-full text-center rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Pricing</Link>
-          <Link href={currentRoutes.about} className="px-4 py-1.5 w-full text-center rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">About us</Link>
+          <Link href={currentRoutes.press} className="px-4 py-1.5 w-full text-center rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Press</Link>
           <Link href={currentRoutes.contact} className="px-4 py-1.5 w-full text-center rounded-md transition-all duration-300 hover:bg-[var(--color-cocollab)] hover:text-white">Contact</Link>
 
           {isAuthenticated ? (

@@ -27,4 +27,9 @@ class PageController extends Controller
     {
         return Inertia::render('brands');
     }
+
+    public function pressPage(): Response
+    {
+        return Inertia::render('press');
+    }
 }

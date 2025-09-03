@@ -70,7 +70,7 @@ const pricingPlans: PricingPlan[] = [
 
 const Pricing: React.FC = () => {
   return (
-    <section className="bg-[var(--color-cocollab)] text-white mt-4 rounded-xl py-16 sm:px-14 px-4">
+    <section id='pricing' className="bg-[var(--color-cocollab)] text-white mt-4 rounded-xl py-16 sm:px-14 px-4">
       <div className="mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light font-title mb-4">
           Simple, Transparent Pricing

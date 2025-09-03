@@ -23,6 +23,7 @@
         <style>
             html {
                 background-color: oklch(1 0 0);
+                scroll-behavior: smooth;
             }
 
             html.dark {

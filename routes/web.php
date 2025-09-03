@@ -23,6 +23,8 @@ Route::middleware(['guest', 'countdown'])->group(function () {
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('influencers');
 
     Route::get('/brands', [PageController::class, 'brandPage'])->name('brands');
+
+    Route::get('/press', [PageController::class, 'pressPage'])->name('press');
 });
 
 
@@ -37,6 +39,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/contact', [PageController::class, 'contactPage'])->name('admin.contact');
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('admin.influencers');
     Route::get('/brands', [PageController::class, 'brandPage'])->name('admin.brands');
+    Route::get('/press', [PageController::class, 'pressPage'])->name('admin.press');
 
 
     Route::prefix('dashboard')->group(function () {
@@ -108,6 +111,7 @@ Route::prefix('influencer')->middleware(['auth', 'influencer', 'countdown'])->gr
     Route::get('/', [PageController::class, 'homePage'])->name('influencer.home');
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('influencer.influencers');
     Route::get('/brands', [PageController::class, 'brandPage'])->name('influencer.brands');
+    Route::get('/press', [PageController::class, 'pressPage'])->name('influencer.press');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('influencer.contact');
 
     Route::prefix('dashboard')->group(function () {
@@ -133,6 +137,7 @@ Route::prefix('brand')->middleware(['auth', 'brand', 'countdown'])->group(functi
     Route::get('/', [PageController::class, 'homePage'])->name('brand.home');
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('brand.influencers');
     Route::get('/brands', [PageController::class, 'brandPage'])->name('brand.brands');
+    Route::get('/press', [PageController::class, 'pressPage'])->name('brand.press');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('brand.contact');
 
     Route::prefix('dashboard')->group(function () {
