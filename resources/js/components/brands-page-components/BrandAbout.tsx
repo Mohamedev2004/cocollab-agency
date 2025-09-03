@@ -89,7 +89,7 @@ const BrandAbout = ({
                 <p className="text-white">{breakout.description}</p>
               </div>
               <Button variant="default" className="mr-auto" asChild>
-                <a href={breakout.buttonUrl} target="_blank">
+                <a href={breakout.buttonUrl}>
                   {breakout.buttonText}
                 </a>
               </Button>
@@ -122,14 +122,17 @@ const BrandAbout = ({
               {achievementsDescription}
             </p>
           </div>
-          <div className="mt-10 flex flex-wrap justify-between gap-10 text-center">
+          <div className="mt-10 flex flex-wrap justify-center md:justify-between gap-10 text-center">
             {achievements.map((item, idx) => (
-              <div className="flex flex-col gap-4" key={item.label + idx}>
+                <div
+                className="flex w-full flex-col items-center gap-4 md:w-auto"
+                key={item.label + idx}
+                >
                 <p>{item.label}</p>
                 <span className="text-4xl font-semibold md:text-5xl">
-                  {item.value}
+                    {item.value}
                 </span>
-              </div>
+                </div>
             ))}
           </div>
           <div className="pointer-events-none absolute -top-1 right-1 z-10 hidden h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom_right,#000,transparent,transparent)] bg-[size:80px_80px] opacity-15 md:block"></div>

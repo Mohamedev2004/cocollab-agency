@@ -1,4 +1,6 @@
 import BrandAbout from '@/components/brands-page-components/BrandAbout';
+import BrandCard from '@/components/brands-page-components/BrandCard';
+import { BrandCta } from '@/components/brands-page-components/BrandCta';
 import BrandHero from '@/components/brands-page-components/BrandHero';
 import Layout from '@/Layouts';
 import { Head } from '@inertiajs/react';
@@ -11,6 +13,8 @@ const Home: React.FC = () => {
             <Head title="Brands" />
             <BrandHero />
             <BrandAbout />
+            <BrandCard />
+            <BrandCta />
         </Layout>
     );
 };
