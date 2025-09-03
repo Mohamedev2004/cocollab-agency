@@ -14,7 +14,7 @@ const Partners: React.FC = () => {
   ];
 
   return (
-    <section data-aos='fade-up' className="w-full py-12 bg-white mt-4 rounded-xl">
+    <section  className="w-full py-12 bg-white mt-4 rounded-xl">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         {/* <div className="text-center mb-8 sm:mb-12">

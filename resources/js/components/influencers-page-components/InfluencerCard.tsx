@@ -77,40 +77,44 @@ const truncateText = (text: string, maxLength: number): string => {
 const App = () => {
   return (
     <div className="flex flex-col items-center bg-[var(--color-cocollab)] justify-center min-h-screen mt-4 rounded-2xl px-6 py-14 font-sans">
-      {/* Heading */}
-      <h1 className="text-4xl font-title font-light mb-4 text-center text-gray-200">
-        Top Influencers
-      </h1>
+      <div className="container mx-auto flex flex-col items-center">
+        
+        {/* Heading */}
+        <h1 className="text-4xl font-title font-light mb-4 text-center text-gray-200">
+          Top Influencers
+        </h1>
 
-      {/* Intro text */}
-      <p className="text-gray-200 text-center px-8 max-w-3xl mb-12 sm:text-lg font-light">
-        Discover and connect with the most talented influencers across different
-        industries. Browse their profiles, explore their stats, and find the
-        perfect match for your brand.
-      </p>
+        {/* Intro text */}
+        <p className="text-gray-200 text-center px-8 max-w-3xl mb-12 sm:text-lg font-light">
+          Discover and connect with the most talented influencers across different
+          industries. Browse their profiles, explore their stats, and find the
+          perfect match for your brand.
+        </p>
 
-      {/* Cards grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-10 px-4 sm:px-0">
-        {influencers.map((influencer, index) => (
-          <InfluencerCard key={index} {...influencer} />
-        ))}
-      </div>
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-10 px-4 sm:px-0 w-full">
+          {influencers.map((influencer, index) => (
+            <InfluencerCard key={index} {...influencer} />
+          ))}
+        </div>
 
-      {/* See More button */}
-       <Link
-            href=""
-            className="group mt-6 bg-white text-[var(--color-cocollab)] text-md px-6 py-2.5 
-                        flex items-center gap-2 rounded-xl font-semibold 
-                        transition-all duration-300 hover:opacity-90 hover:shadow-lg"
-            style={{
-                boxShadow: "0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833",
-            }}
-            >
-            See more
+        {/* See More button */}
+        <Link
+          href=""
+          className="group mt-6 bg-white text-[var(--color-cocollab)] text-md px-6 py-2.5 
+                     flex items-center gap-2 rounded-xl font-semibold 
+                     transition-all duration-300 hover:opacity-90 hover:shadow-lg max-w-max"
+          style={{
+            boxShadow: "0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833",
+          }}
+        >
+          See more
         </Link>
+      </div>
     </div>
   );
 };
+
 
 // InfluencerCard component displays a single influencer's details.
 const InfluencerCard: React.FC<InfluencerProps> = ({
@@ -119,7 +123,7 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
   image,
   stats,
 }) => {
-  const TRUNCATE_LENGTH = 70;
+  const TRUNCATE_LENGTH = 60;
   const truncatedDescription = truncateText(description, TRUNCATE_LENGTH);
 
   return (
@@ -128,7 +132,7 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
                  transform transition-transform duration-500 ease-in-out sm:hover:scale-103 hover:shadow-xl"
     >
       {/* Influencer image section */}
-      <div data-aos="zoom-in" className="relative p-3">
+      <div  className="relative p-3">
         <img
           src={image}
           alt={`Profile of ${name}`}
@@ -147,7 +151,7 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
       </div>
 
       {/* Card content section */}
-      <div data-aos="slide-up" className="p-6">
+      <div  className="p-6">
         {/* Name and verified badge */}
         <div className="flex items-center space-x-2 mb-2">
           <h2 className="text-xl font-semibold text-gray-900">{name}</h2>

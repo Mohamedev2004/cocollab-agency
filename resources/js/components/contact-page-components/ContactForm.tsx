@@ -135,11 +135,11 @@ const ContactForm: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full flex flex-row  items-center justify-center gap-2 bg-[var(--color-cocollab)] hover:opacity-90 text-white py-3 cursor-pointer rounded-lg text-lg font-semibold"
+                className="w-full flex flex-row  items-center justify-center gap-2 bg-[var(--color-cocollab)] hover:opacity-90 text-white py-2 cursor-pointer rounded-lg text-md font-semibold"
                 style={{ boxShadow: '0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833' }}
                 disabled={processing}
               >
-                <Send />
+                <Send  className="w-5 h-5"/>
                 {processing ? "Sending..." : "Send Message"}
               </button>
             </form>

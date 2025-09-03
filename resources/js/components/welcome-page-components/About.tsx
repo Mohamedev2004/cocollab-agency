@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section data-aos='zoom-in' className="bg-white py-16 px-6 sm:px-12 rounded-xl shadow-md w-full mx-auto mt-4">
+    <section  className="bg-white py-16 px-6 sm:px-12 rounded-xl shadow-md w-full mx-auto mt-4">
       
       {/* Flex Row: About + Text */}
       <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-14">

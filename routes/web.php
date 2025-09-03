@@ -21,6 +21,8 @@ Route::middleware(['guest', 'countdown'])->group(function () {
     Route::get('/contact', [PageController::class, 'contactPage'])->name('contact');
 
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('influencers');
+
+    Route::get('/brands', [PageController::class, 'brandPage'])->name('brands');
 });
 
 
@@ -34,6 +36,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [PageController::class, 'homePage'])->name('admin.home');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('admin.contact');
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('admin.influencers');
+    Route::get('/brands', [PageController::class, 'brandPage'])->name('admin.brands');
 
 
     Route::prefix('dashboard')->group(function () {
@@ -104,6 +107,7 @@ Route::prefix('influencer')->middleware(['auth', 'influencer', 'countdown'])->gr
 
     Route::get('/', [PageController::class, 'homePage'])->name('influencer.home');
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('influencer.influencers');
+    Route::get('/brands', [PageController::class, 'brandPage'])->name('influencer.brands');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('influencer.contact');
 
     Route::prefix('dashboard')->group(function () {
@@ -128,6 +132,7 @@ Route::prefix('brand')->middleware(['auth', 'brand', 'countdown'])->group(functi
 
     Route::get('/', [PageController::class, 'homePage'])->name('brand.home');
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('brand.influencers');
+    Route::get('/brands', [PageController::class, 'brandPage'])->name('brand.brands');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('brand.contact');
 
     Route::prefix('dashboard')->group(function () {

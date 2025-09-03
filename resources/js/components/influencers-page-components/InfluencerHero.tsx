@@ -65,7 +65,7 @@ const InfluencerHero = ({
     <div className="flex bg-white p-6 rounded-2xl items-center justify-center">
       <section>
         <div className="container grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-          <div data-aos='fade-in' className="mx-auto flex flex-col items-center text-center md:ml-auto lg:max-w-3xl lg:items-start lg:text-left">
+          <div  className="mx-auto flex flex-col items-center text-center md:ml-auto lg:max-w-3xl lg:items-start lg:text-left">
             <h1 className="text-4xl font-title sm:text-5xl lg:text-6xl font-light leading-tight mb-6 text-black">
               {heading}
             </h1>
@@ -88,7 +88,7 @@ const InfluencerHero = ({
                       className="size-5 fill-yellow-500 text-yellow-500"
                     />
                   ))}
-                  <span className="mr-1 font-semibold">
+                  <span className="mr-1 text-gray-500 font-semibold">
                     {reviews.rating?.toFixed(1)}
                   </span>
                 </div>
@@ -108,11 +108,11 @@ const InfluencerHero = ({
               </Link>
             </div>
           </div>
-          <div className="flex" data-aos='slide-right'>
+          <div className="flex" >
             <img
               src="/assets/InfluencerHero.jpg"
               alt="placeholder hero"
-              className="max-h-[600px] w-full rounded-md object-cover lg:max-h-[800px]"
+              className="max-h-[600px] w-full rounded-lg object-cover lg:max-h-[800px]"
             />
           </div>
         </div>

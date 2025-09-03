@@ -30,7 +30,7 @@ const Header: React.FC = () => {
     admin: {
       home: route('admin.home'),
       influencers: route('admin.influencers'),
-      brands: route('admin.home'),
+      brands: route('admin.brands'),
       pricing: route('admin.home'),
       about: route('admin.home'),
       contact: route('admin.home'),
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     influencer: {
       home: route('influencer.home'),
       influencers: route('influencer.influencers'),
-      brands: route('influencer.home'),
+      brands: route('influencer.brands'),
       pricing: route('influencer.home'),
       about: route('influencer.home'),
       contact: route('influencer.home'),
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
     brand: {
       home: route('brand.home'),
       influencers: route('brand.influencers'),
-      brands: route('brand.home'),
+      brands: route('brand.brands'),
       pricing: route('brand.home'),
       about: route('brand.home'),
       contact: route('brand.home'),
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
     guest: {
       home: route('home'),
       influencers: route('influencers'),
-      brands: route('home'),
+      brands: route('brands'),
       pricing: route('home'),
       about: route('home'),
       contact: route('contact'),

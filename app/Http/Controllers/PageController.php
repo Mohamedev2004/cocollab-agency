@@ -22,4 +22,9 @@ class PageController extends Controller
     {
         return Inertia::render('influencers');
     }
+
+    public function brandPage(): Response
+    {
+        return Inertia::render('brands');
+    }
 }

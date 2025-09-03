@@ -79,7 +79,7 @@ const Pricing: React.FC = () => {
           Choose a plan designed to grow with your brand. No hidden fees, just straightforward access to authentic influencer collaborations.
         </p>
 
-        <div data-aos='slide-up' data-aos-delay='400' className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch justify-center">
+        <div  data-aos-delay='400' className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch justify-center">
           {pricingPlans.map((plan) => (
             <div
               key={plan.id}

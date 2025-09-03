@@ -90,7 +90,7 @@ export function DataTable<TData, TValue>({
         {table.getFilteredRowModel().rows.length} row(s) selected.
       </div>
 
-      <div data-aos='fade-up' className="overflow-hidden rounded-md border">
+      <div  className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

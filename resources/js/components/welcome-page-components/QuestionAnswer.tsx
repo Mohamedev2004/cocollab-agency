@@ -79,7 +79,7 @@ const QuestionAnswer: React.FC = () => {
   };
 
   return (
-    <div data-aos='zoom-in' className="w-full mt-4 rounded-xl bg-white mx-auto p-4 md:p-8">
+    <div  className="w-full mt-4 rounded-xl bg-white mx-auto p-4 md:p-8">
       <div className="text-center bg-white mt-6 mb-10">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black font-light font-title mb-4">
           Getting Started{' '}

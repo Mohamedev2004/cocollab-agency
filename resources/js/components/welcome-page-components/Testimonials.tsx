@@ -58,7 +58,7 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section data-aos='zoom-in' className="w-full py-12 md:py-16 bg-white text-black rounded-xl shadow-lg mt-4">
+    <section  className="w-full py-12 md:py-16 bg-white text-black rounded-xl shadow-lg mt-4">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14">

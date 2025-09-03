@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
     // Removed overflow-hidden from here, as individual sections will handle their own rounding
     <section className="w-full mx-auto flex flex-col lg:flex-row gap-4">
       {/* Left Section: Content - now explicitly white background and fully rounded */}
-      <div data-aos='fade-right' className="lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-center lg:text-left bg-white rounded-2xl shadow-sm">
+      <div  className="lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-center lg:text-left bg-white rounded-2xl shadow-sm">
         {/* Reviews Badge */}
         <div className="flex items-center justify-center lg:justify-start mb-6">
           <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-purple-100 text-[var(--color-cocollab)] font-semibold shadow-sm">
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Right Section: Image/Mockup - now fully rounded and with new content */}
-      <div data-aos='zoom-in' className="lg:w-1/2 relative flex items-center justify-center rounded-2xl shadow-sm overflow-hidden min-h-[400px] lg:min-h-[500px]">
+      <div  className="lg:w-1/2 relative flex items-center justify-center rounded-2xl shadow-sm overflow-hidden min-h-[400px] lg:min-h-[500px]">
         {/* Background Image */}
         <img
           src="/assets/heroImage.svg" // Placeholder for the new image

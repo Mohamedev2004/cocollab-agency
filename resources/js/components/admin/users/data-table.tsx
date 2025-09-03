@@ -117,7 +117,7 @@ export function DataTable<TData, TValue>({
             </div>
 
             {/* Table */}
-            <div data-aos='fade-up' className="overflow-hidden rounded-md border">
+            <div  className="overflow-hidden rounded-md border">
                 <Table className="min-w-full">
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (

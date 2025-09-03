@@ -31,15 +31,15 @@ const WhyChooseUs: React.FC = () => {
                 <img
                   src={card.image}
                   alt={card.title}
-                  data-aos='zoom-in'
+                  
                   className="lg:w-[60%] w-[80%] h-auto m-auto object-cover" // Adjust size and styling as needed
                 />
               </div>
             )}
-            <h3 data-aos='fade-up' className="text-3xl text-center mt-4 text-black font-semibold mb-2">
+            <h3  className="text-3xl text-center mt-4 text-black font-semibold mb-2">
               {card.title}
             </h3>
-            <p data-aos='fade-up' className="text-gray-600 max-w-2xl m-auto text-center text-sm mb-4 leading-relaxed">
+            <p  className="text-gray-600 max-w-2xl m-auto text-center text-sm mb-4 leading-relaxed">
               {card.description}
             </p>
           </div>

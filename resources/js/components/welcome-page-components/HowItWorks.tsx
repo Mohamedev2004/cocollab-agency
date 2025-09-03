@@ -2,7 +2,7 @@ import React from 'react';
 
 const HowItWorks = () => {
   return (
-    <section data-aos='fade-up' className="bg-[var(--color-cocollab)] text-white mt-4 rounded-xl py-20 px-10 font-sans sm:text-center">
+    <section  className="bg-[var(--color-cocollab)] text-white mt-4 rounded-xl py-20 px-10 font-sans sm:text-center">
       <div className="mx-auto">
         <h2 className="text-2xl md:text-5xl font-title font-light leading-tight mb-5">
           How It Works: Start Collaborating in 3 Simple Steps
