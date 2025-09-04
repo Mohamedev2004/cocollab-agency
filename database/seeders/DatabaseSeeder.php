@@ -6,6 +6,7 @@ use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\NewsletterSeeder;
+use Database\Seeders\AppointmentSeeder;
 use Database\Seeders\ContactSeeder;
 use Database\Seeders\UserActivitySeeder;
 
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
             TestimonialSeeder::class,
             NotificationSeeder::class,
             UserActivitySeeder::class,
+            AppointmentSeeder::class,
         ]);
     }
 }

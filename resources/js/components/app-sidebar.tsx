@@ -19,6 +19,7 @@ import {
   User,
   Clock,
   BellPlus,
+  CalendarDays,
 } from 'lucide-react';
 import AppLogo from './app-logo';
 
@@ -44,6 +45,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
       { title: 'Contacts', href: route('contacts.index'), icon: MessageSquareText },
       { title: 'Newsletters', href: route('newsletters.index'), icon: MailCheck },
       { title: 'Countdown', href: route('countdown.index'), icon: Clock },
+      { title: 'Appointments', href: route('appointments.index'), icon: CalendarDays },
       {
         title: 'Notifications',
         href: route('notifications.index'),

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountdownController;
 use App\Http\Controllers\DashboardController;
@@ -95,6 +96,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::post('/countdown', [CountdownController::class, 'createOrUpdate'])->name('countdown.createOrUpdate');
         Route::delete('/countdown/{countdown}', [CountdownController::class, 'destroy'])->name('countdown.destroy');
 
+        // Appointments
+        Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+
         // Notifications
         Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
         Route::post('/notifications/{id}/mark-as-read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
@@ -161,6 +165,10 @@ Route::post('/newsletters', [NewsletterController::class, 'store'])
 Route::post('/contacts', [ContactController::class, 'store'])
     ->middleware('countdown') // optional, if you still want countdown check
     ->name('contacts.storing');
+
+    Route::post('/appointments', [AppointmentController::class, 'store'])
+        ->middleware('countdown') // optional, if you still want countdown check
+        ->name('appointments.storing');
 
 
 

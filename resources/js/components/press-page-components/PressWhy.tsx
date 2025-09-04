@@ -70,7 +70,7 @@ const PressWhy = () => {
               <div
                 key={index}
                 className="border-border space-y-6 rounded-lg border bg-white p-8 
-                transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
+                transition-transform duration-500 ease-in-out hover:scale-103 hover:shadow-lg"
               >
                 <div className="flex items-center gap-4">
                   <div className="bg-[var(--color-cocollab)] rounded-full p-3 text-white">
