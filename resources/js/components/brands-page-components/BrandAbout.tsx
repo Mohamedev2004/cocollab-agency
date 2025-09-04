@@ -68,7 +68,7 @@ const BrandAbout = ({
     <section className="mt-4 bg-[var(--color-cocollab)] rounded-2xl py-20 px-4">
       <div className="container mx-auto">
         <div className="mb-14 grid gap-5 text-center md:grid-cols-2 md:text-left">
-          <h1 className="text-5xl font-semibold">{title}</h1>
+          <h1 className="text-5xl text-white font-semibold">{title}</h1>
           <p className="text-white">{description}</p>
         </div>
         <div className="grid gap-7 lg:grid-cols-3">
@@ -88,7 +88,7 @@ const BrandAbout = ({
                 <p className="mb-2 text-lg text-white font-semibold">{breakout.title}</p>
                 <p className="text-white">{breakout.description}</p>
               </div>
-              <Button variant="default" className="mr-auto" asChild>
+              <Button variant="default" className="mr-auto bg-white text-black hover:bg-white/80" asChild>
                 <a href={breakout.buttonUrl}>
                   {breakout.buttonText}
                 </a>
@@ -117,7 +117,7 @@ const BrandAbout = ({
         </div> */}
         <div className="relative overflow-hidden rounded-xl bg-[#8f8eeb] p-10 md:p-16 mt-8">
           <div className="flex flex-col gap-4 text-center md:text-left">
-            <h2 className="text-4xl font-semibold">{achievementsTitle}</h2>
+            <h2 className="text-4xl text-white font-semibold">{achievementsTitle}</h2>
             <p className="max-w-xl text-white">
               {achievementsDescription}
             </p>
@@ -125,11 +125,11 @@ const BrandAbout = ({
           <div className="mt-10 flex flex-wrap justify-center md:justify-between gap-10 text-center">
             {achievements.map((item, idx) => (
                 <div
-                className="flex w-full flex-col items-center gap-4 md:w-auto"
+                className="flex w-full flex-col items-center text-white gap-4 md:w-auto"
                 key={item.label + idx}
                 >
                 <p>{item.label}</p>
-                <span className="text-4xl font-semibold md:text-5xl">
+                <span className="text-4xl text-white font-semibold md:text-5xl">
                     {item.value}
                 </span>
                 </div>

@@ -47,7 +47,7 @@ const InfluencerCta = ({
             </p>
             <div className="flex justify-center flex-col gap-3 sm:flex-row sm:gap-4">
               {buttons.primary && (
-                <Button size="lg" className="w-full sm:w-auto" asChild>
+                <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-white/80" asChild>
                     <a href={buttons.primary.url} className="flex items-center gap-2">
                         {buttons.primary.text} <ArrowRight />
                     </a>

@@ -35,7 +35,7 @@ const BrandCta = ({
                 <h4 className="mb-2 text-3xl font-bold md:text-4xl">{title}</h4>
                 <p className="opacity-90">{description}</p>
                 <Button
-                  className="mt-6 bg-white text-[var(--color-cocollab)] hover:opacity-90"
+                  className="mt-6 bg-white text-[var(--color-cocollab)] hover:bg-white/80"
                   asChild
                 >
                   <a href={buttonUrl}>
