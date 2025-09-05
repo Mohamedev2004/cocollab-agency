@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/react';
 import React from 'react';
 import ContactForm from '@/components/contact-page-components/ContactForm';
 
-const Home: React.FC = () => {
+const Contact: React.FC = () => {
 
     return (
         <Layout>
@@ -13,4 +13,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Contact;

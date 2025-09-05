@@ -6,7 +6,7 @@ import Layout from '@/Layouts';
 import { Head } from '@inertiajs/react';
 import React from 'react';
 
-const Home: React.FC = () => {
+const Brands: React.FC = () => {
 
     return (
         <Layout>
@@ -19,4 +19,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Brands;

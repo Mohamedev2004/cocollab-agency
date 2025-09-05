@@ -26,6 +26,8 @@ Route::middleware(['guest', 'countdown'])->group(function () {
     Route::get('/brands', [PageController::class, 'brandPage'])->name('brands');
 
     Route::get('/press', [PageController::class, 'pressPage'])->name('press');
+
+    Route::get('/influencer-profile', [PageController::class, 'influencerProfilePage'])->name('influencer-profile');
 });
 
 

@@ -5,7 +5,7 @@ import PressHero from '@/components/press-page-components/PressHero';
 import PressWhy from '@/components/press-page-components/PressWhy';
 import PressHow from '@/components/press-page-components/PressHow';
 
-const Home: React.FC = () => {
+const Press: React.FC = () => {
 
     return (
         <Layout>
@@ -17,4 +17,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Press;

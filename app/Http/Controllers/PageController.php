@@ -32,4 +32,9 @@ class PageController extends Controller
     {
         return Inertia::render('press');
     }
+
+    public function influencerProfilePage(): Response
+    {
+        return Inertia::render('influencer-profile');
+    }
 }
