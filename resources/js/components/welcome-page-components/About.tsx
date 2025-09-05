@@ -7,8 +7,11 @@ const About = () => {
       {/* Flex Row: About + Text */}
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 mb-14">
         {/* Left: About Us Badge */}
-        <div className="flex-shrink-0 mb-4 lg:mb-0">
-          <span className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-purple-100 text-purple-700 shadow-sm">
+        <div className="flex items-center justify-center lg:justify-start mb-6">
+          <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-purple-100 text-[var(--color-cocollab)] font-semibold shadow-sm">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
             About Us
           </span>
         </div>

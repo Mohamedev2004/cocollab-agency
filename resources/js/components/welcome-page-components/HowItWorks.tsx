@@ -56,7 +56,7 @@ const HowItWorks = () => {
           Built for trust, designed for growth — Cocollab is where real collaborations begin and lasting impact is made.
         </p>
 
-        <button className="m-auto flex items-center justify-center px-6 py-3 sm:py-3.5 bg-white text-[var(--color-cocollab)] font-semibold rounded-xl shadow-md cursor-pointer transition duration-300 ease-in-out transform hover:opacity-90"
+        <button className="m-auto flex items-center justify-center px-6 py-2.5 bg-white text-[var(--color-cocollab)] font-semibold rounded-xl shadow-md cursor-pointer transition duration-300 ease-in-out transform hover:opacity-90"
           style={{ boxShadow: '0 10px 15px -3px #c3c0c044, 0 4px 6px -4px #ffffff33' }}>
           Get Started Now
           <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
