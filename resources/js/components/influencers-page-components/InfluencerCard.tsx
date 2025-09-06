@@ -197,11 +197,12 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
         </div>
 
         {/* "Get In Touch" button */}
-        <button
-          className="flex items-center gap-4 w-full justify-center px-6 py-2.5 
-                     bg-[var(--color-cocollab)] text-white font-semibold rounded-xl 
-                     shadow-lg cursor-pointer transition duration-300 ease-in-out 
-                     transform hover:opacity-90"
+        <Link href={route('influencer-profile')}>
+          <button
+            className="flex items-center gap-4 w-full justify-center px-6 py-2.5 
+                       bg-[var(--color-cocollab)] text-white font-semibold rounded-xl 
+                       shadow-lg cursor-pointer transition duration-300 ease-in-out 
+                       transform hover:opacity-90"
           style={{
             boxShadow:
               '0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833',
@@ -210,6 +211,7 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
           <UserPen />
           View Profile
         </button>
+        </Link>
       </div>
     </div>
   );

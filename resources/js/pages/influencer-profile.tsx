@@ -9,7 +9,7 @@ const InfluencerProfile: React.FC = () => {
     return (
         <Layout>
             <Head title="Influencer Profile" />
-            <div className="mx-auto md:px-8 lg:flex lg:space-x-4">
+            <div className="mx-auto xl:px-8 lg:flex lg:space-x-4">
                 {/* Influencer Card (Sidebar) */}
                 <aside className="w-full lg:w-80 flex-shrink-0 mb-8 lg:mb-0">
                     <InfluencerCard />

@@ -19,6 +19,16 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+import ImageCropper from "@/components/ImageCropper";
+import { ImageZoom } from "../ImageZoom";
 
 interface Post {
   id: number;
@@ -31,14 +41,12 @@ interface Post {
     avatar: string;
   };
 }
-
-const InfluencerPost: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([
+const dummyPosts = [
     {
       id: 1,
       image: "/assets/influencers/post1.png",
-      caption: "Morning workout vibes 💪🔥 #fitness #motivation",
-      likes: 1200,
+      caption: "Feeling creative today! 🎨✨ The best art is an expression of the soul. What are you creating?",
+      likes: 1245,
       user: {
         name: "Sam Guy",
         username: "samguy",
@@ -47,9 +55,9 @@ const InfluencerPost: React.FC = () => {
     },
     {
       id: 2,
-      image: "/assets/influencers/post3.png",
-      caption: "Meal prep Sunday 🍴 #healthyliving",
-      likes: 890,
+      image: "/assets/influencers/post2.png",
+      caption: "Sunday vibes are all about relaxing with a good book and a warm cup of coffee. ☕📚 What's your favorite book right now?",
+      likes: 876,
       user: {
         name: "Sam Guy",
         username: "samguy",
@@ -58,9 +66,9 @@ const InfluencerPost: React.FC = () => {
     },
     {
       id: 3,
-      image: "/assets/influencers/post2.png",
-      caption: "Weekend hike 🌲🏞️",
-      likes: 560,
+      image: "/assets/influencers/post3.png",
+      caption: "Out and about exploring the city! 🏙️ There's so much beauty to find in the small details. #citylife #urbanexplorer",
+      likes: 2109,
       user: {
         name: "Sam Guy",
         username: "samguy",
@@ -70,8 +78,8 @@ const InfluencerPost: React.FC = () => {
     {
       id: 4,
       image: "/assets/influencers/post4.png",
-      caption: "Morning workout vibes 💪🔥 #fitness #motivation",
-      likes: 1200,
+      caption: "A little sneak peek at my new project! It’s been a lot of work, but I'm so excited to share it with you all soon! 🤩",
+      likes: 1532,
       user: {
         name: "Sam Guy",
         username: "samguy",
@@ -81,8 +89,8 @@ const InfluencerPost: React.FC = () => {
     {
       id: 5,
       image: "/assets/influencers/post5.png",
-      caption: "Meal prep Sunday 🍴 #healthyliving",
-      likes: 890,
+      caption: "Enjoying the sunset and reflecting on the week. 🌅 Grateful for all the amazing opportunities and connections. #gratitude #sunsetlover",
+      likes: 981,
       user: {
         name: "Sam Guy",
         username: "samguy",
@@ -92,24 +100,47 @@ const InfluencerPost: React.FC = () => {
     {
       id: 6,
       image: "/assets/influencers/post6.png",
-      caption: "Weekend hike 🌲🏞️",
-      likes: 560,
+      caption: "My happy place. Nothing beats a quiet afternoon creating something new. What's your favorite hobby? 🤔",
+      likes: 1899,
       user: {
         name: "Sam Guy",
         username: "samguy",
         avatar: "/assets/influencers/3.jpg",
       },
     },
-  ]);
+  ];
 
+const InfluencerPost: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>(dummyPosts);
   const [newCaption, setNewCaption] = useState("");
+  const [deleteId, setDeleteId] = useState<number | null>(null);
+
+  // 👇 New states for image upload + crop
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [croppedImage, setCroppedImage] = useState<File | null>(null);
+  const [isCropOpen, setIsCropOpen] = useState(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedFile(e.target.files[0]);
+      setIsCropOpen(true); // open crop dialog
+    }
+  };
+
+  const handleCropComplete = (file: File) => {
+    setCroppedImage(file);
+  };
 
   const handleCreatePost = () => {
-    if (!newCaption.trim()) return;
+    if (!newCaption.trim() && !croppedImage) return;
+
+    const imageUrl = croppedImage
+      ? URL.createObjectURL(croppedImage)
+      : "/assets/influencers/post1.png";
 
     const newPost: Post = {
       id: posts.length + 1,
-      image: "/assets/influencers/post.png",
+      image: imageUrl,
       caption: newCaption,
       likes: 0,
       user: {
@@ -121,16 +152,18 @@ const InfluencerPost: React.FC = () => {
 
     setPosts([newPost, ...posts]);
     setNewCaption("");
+    setCroppedImage(null);
   };
 
-  const handleDelete = (id: number) => {
-    console.log("Deleted post:", id);
-    // Later: send to backend delete
+  const handleConfirmDelete = () => {
+    if (deleteId !== null) {
+      setPosts(posts.filter((post) => post.id !== deleteId));
+      setDeleteId(null);
+    }
   };
 
   const handleArchive = (id: number) => {
     console.log("Archived post:", id);
-    // Later: send to backend archive
   };
 
   return (
@@ -152,11 +185,24 @@ const InfluencerPost: React.FC = () => {
               className="w-full rounded-xl border border-gray-300 focus:ring-2 focus:ring-[var(--color-cocollab)] focus:outline-none p-3 text-sm resize-none"
               rows={3}
             />
+            {croppedImage && (
+              <img
+                src={URL.createObjectURL(croppedImage)}
+                alt="Preview"
+                className="w-40 h-auto object-cover rounded-xl border"
+              />
+            )}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-              <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border text-sm text-gray-600 hover:bg-gray-100 transition w-full sm:w-auto">
+              <label className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border text-sm text-gray-600 hover:bg-gray-100 transition w-full sm:w-auto cursor-pointer">
                 <Image size={18} />
                 Upload Image
-              </button>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+              </label>
               <button
                 onClick={handleCreatePost}
                 className="flex items-center justify-center gap-2 px-5 py-2 bg-[var(--color-cocollab)] text-white text-sm font-semibold rounded-lg hover:opacity-90 transition cursor-pointer w-full sm:w-auto"
@@ -216,8 +262,8 @@ const InfluencerPost: React.FC = () => {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     variant="destructive"
-                    onClick={() => handleDelete(post.id)}
-                    className="cursor-pointer"
+                    onClick={() => setDeleteId(post.id)}
+                    className="cursor-pointer text-red-600"
                   >
                     <Trash className="mr-2 h-4 w-4" />
                     Delete
@@ -227,11 +273,13 @@ const InfluencerPost: React.FC = () => {
             </div>
 
             {/* Post Image */}
-            <img
-              src={post.image}
-              alt={post.caption}
-              className="w-full h-auto object-cover"
-            />
+            <ImageZoom>
+              <img
+                src={post.image}
+                alt={post.caption}
+                className="w-full h-auto object-cover"
+              />
+            </ImageZoom>
 
             {/* Actions */}
             <div className="flex items-center justify-between px-4 py-3 text-gray-600">
@@ -258,6 +306,37 @@ const InfluencerPost: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={deleteId !== null} onOpenChange={() => setDeleteId(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you sure?</DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-gray-500">
+            This action cannot be undone. The post will be permanently deleted.
+          </p>
+          <DialogFooter className="flex justify-end gap-2 mt-4">
+            <Button variant="outline" onClick={() => setDeleteId(null)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleConfirmDelete}>
+              Delete
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Image Cropper Dialog */}
+      {selectedFile && (
+        <ImageCropper
+          isOpen={isCropOpen}
+          onClose={() => setIsCropOpen(false)}
+          imageFile={selectedFile}
+          onCropComplete={handleCropComplete}
+          aspectRatio={416/334}
+        />
+      )}
     </div>
   );
 };
