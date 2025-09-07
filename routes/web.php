@@ -28,6 +28,8 @@ Route::middleware(['guest', 'countdown'])->group(function () {
     Route::get('/press', [PageController::class, 'pressPage'])->name('press');
 
     Route::get('/influencer-profile', [PageController::class, 'influencerProfilePage'])->name('influencer-profile');
+
+    Route::get('/brand-profile', [PageController::class, 'brandProfilePage'])->name('brand-profile');
 });
 
 
@@ -43,6 +45,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/influencers', [PageController::class, 'influencerPage'])->name('admin.influencers');
     Route::get('/brands', [PageController::class, 'brandPage'])->name('admin.brands');
     Route::get('/press', [PageController::class, 'pressPage'])->name('admin.press');
+    Route::get('/influencer-profile', [PageController::class, 'influencerProfilePage'])->name('admin.influencer-profile');
+    Route::get('/brand-profile', [PageController::class, 'brandProfilePage'])->name('admin.brand-profile');
 
 
     Route::prefix('dashboard')->group(function () {
@@ -119,6 +123,8 @@ Route::prefix('influencer')->middleware(['auth', 'influencer', 'countdown'])->gr
     Route::get('/brands', [PageController::class, 'brandPage'])->name('influencer.brands');
     Route::get('/press', [PageController::class, 'pressPage'])->name('influencer.press');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('influencer.contact');
+    Route::get('/influencer-profile', [PageController::class, 'influencerProfilePage'])->name('influencer.influencer-profile');
+    Route::get('/brand-profile', [PageController::class, 'brandProfilePage'])->name('influencer.brand-profile');
 
     Route::prefix('dashboard')->group(function () {
 
@@ -145,6 +151,8 @@ Route::prefix('brand')->middleware(['auth', 'brand', 'countdown'])->group(functi
     Route::get('/brands', [PageController::class, 'brandPage'])->name('brand.brands');
     Route::get('/press', [PageController::class, 'pressPage'])->name('brand.press');
     Route::get('/contact', [PageController::class, 'contactPage'])->name('brand.contact');
+    Route::get('/influencer-profile', [PageController::class, 'influencerProfilePage'])->name('brand.influencer-profile');
+    Route::get('/brand-profile', [PageController::class, 'brandProfilePage'])->name('brand.brand-profile');
 
     Route::prefix('dashboard')->group(function () {
 

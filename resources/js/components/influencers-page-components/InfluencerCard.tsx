@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { UserPen, Star, BadgeCheck, Bookmark } from 'lucide-react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
 // Define types for the stats object
 interface InfluencerStats {
@@ -15,6 +16,22 @@ interface InfluencerProps {
   description: string;
   image: string;
   stats: InfluencerStats;
+}
+
+// Define user type
+interface User {
+  id: number;
+  name: string;
+  role: string;
+  email: string;
+}
+
+// Define page props type
+interface PageProps {
+  auth?: {
+    user?: User | null;
+  };
+  [key: string]: any;
 }
 
 // Sample data for the influencers to be displayed.
@@ -115,7 +132,6 @@ const App = () => {
   );
 };
 
-
 // InfluencerCard component displays a single influencer's details.
 const InfluencerCard: React.FC<InfluencerProps> = ({
   name,
@@ -123,6 +139,18 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
   image,
   stats,
 }) => {
+  const { auth } = usePage<PageProps>().props;
+  const user = auth?.user;
+
+  // Pick profile route depending on role
+  const getProfileRoute = () => {
+    if (!user) return route('influencer-profile'); // fallback guest
+    if (user.role === 'admin') return route('admin.influencer-profile');
+    if (user.role === 'influencer') return route('influencer.influencer-profile');
+    if (user.role === 'brand') return route('brand.influencer-profile');
+    return route('influencer-profile');
+  };
+
   const TRUNCATE_LENGTH = 60;
   const truncatedDescription = truncateText(description, TRUNCATE_LENGTH);
 
@@ -140,7 +168,7 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
         />
 
         {/* Favorite (Bookmark) Icon */}
-       <button
+        <button
           className="absolute cursor-pointer top-6 right-6 
                     bg-white backdrop-blur-md 
                     rounded-full p-2 shadow-md 
@@ -196,21 +224,21 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
           </div>
         </div>
 
-        {/* "Get In Touch" button */}
-        <Link href={route('influencer-profile')}>
+        {/* "View Profile" button */}
+        <Link href={getProfileRoute()}>
           <button
             className="flex items-center gap-4 w-full justify-center px-6 py-2.5 
                        bg-[var(--color-cocollab)] text-white font-semibold rounded-xl 
                        shadow-lg cursor-pointer transition duration-300 ease-in-out 
                        transform hover:opacity-90"
-          style={{
-            boxShadow:
-              '0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833',
-          }}
-        >
-          <UserPen />
-          View Profile
-        </button>
+            style={{
+              boxShadow:
+                '0 10px 15px -3px #40377844, 0 4px 6px -4px #40377833',
+            }}
+          >
+            <UserPen />
+            View Profile
+          </button>
         </Link>
       </div>
     </div>

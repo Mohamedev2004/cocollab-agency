@@ -37,4 +37,9 @@ class PageController extends Controller
     {
         return Inertia::render('influencer-profile');
     }
+
+    public function brandProfilePage(): Response
+    {
+        return Inertia::render('brand-profile');
+    }
 }
