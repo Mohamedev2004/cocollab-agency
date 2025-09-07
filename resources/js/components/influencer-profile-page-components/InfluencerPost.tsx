@@ -25,10 +25,12 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 
 import ImageCropper from "@/components/ImageCropper";
 import { ImageZoom } from "../ImageZoom";
+import { Textarea } from "../ui/textarea";
 
 interface Post {
   id: number;
@@ -156,10 +158,8 @@ const InfluencerPost: React.FC = () => {
   };
 
   const handleConfirmDelete = () => {
-    if (deleteId !== null) {
-      setPosts(posts.filter((post) => post.id !== deleteId));
-      setDeleteId(null);
-    }
+    console.log("Deleted post:", deleteId);
+    setDeleteId(null);
   };
 
   const handleArchive = (id: number) => {
@@ -178,7 +178,7 @@ const InfluencerPost: React.FC = () => {
             className="w-12 h-12 rounded-full object-cover flex-shrink-0"
           />
           <div className="flex-1 space-y-3">
-            <textarea
+            <Textarea
               placeholder="What's on your mind?"
               value={newCaption}
               onChange={(e) => setNewCaption(e.target.value)}
@@ -312,10 +312,10 @@ const InfluencerPost: React.FC = () => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Are you sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. The post will be permanently deleted.
+            </DialogDescription>
           </DialogHeader>
-          <p className="text-sm text-gray-500">
-            This action cannot be undone. The post will be permanently deleted.
-          </p>
           <DialogFooter className="flex justify-end gap-2 mt-4">
             <Button variant="outline" onClick={() => setDeleteId(null)}>
               Cancel
