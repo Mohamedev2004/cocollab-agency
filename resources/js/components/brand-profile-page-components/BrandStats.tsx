@@ -34,8 +34,8 @@ const BrandStats: React.FC = () => {
   // Chart data for platforms
   const platformData = mounted
     ? [
-        { platform: "Instagram", value: 50, fill: "var(--chart-1)" },
-        { platform: "TikTok", value: 30, fill: "var(--chart-2)" },
+        { platform: "Instagram", value: 60, fill: "var(--chart-1)" },
+        { platform: "TikTok", value: 20, fill: "var(--chart-2)" },
         { platform: "YouTube", value: 20, fill: "var(--chart-3)" },
       ]
     : [
@@ -60,7 +60,6 @@ const BrandStats: React.FC = () => {
       ];
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg p-6 w-full mx-auto lg:mx-0 mt-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Platforms Pie Chart */}
         <Card>
@@ -158,7 +157,11 @@ const BrandStats: React.FC = () => {
         {/* Niches Horizontal Bar Chart */}
         <Card>
           <CardHeader>
-            <CardTitle>Top Niches Collaborated With</CardTitle>
+            <CardTitle>
+              <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-purple-100 text-[var(--color-cocollab)] font-semibold shadow-sm">
+                Top Niches Collaborated With
+              </span>
+            </CardTitle>
           </CardHeader>
           <CardContent className="px-0">
             <ChartContainer
@@ -215,7 +218,6 @@ const BrandStats: React.FC = () => {
           </CardFooter>
         </Card>
       </div>
-    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import React from 'react';
 import BrandCard from '@/components/brand-profile-page-components/BrandCard';
 import BrandBio from '@/components/brand-profile-page-components/BrandBio';
 import BrandStats from '@/components/brand-profile-page-components/BrandStats';
+import BrandPost from '@/components/brand-profile-page-components/BrandPost';
 
 const BrandProfile: React.FC = () => {
     return (
@@ -20,8 +21,10 @@ const BrandProfile: React.FC = () => {
                 <main className="flex-1 space-y-4">
                     {/* BrandBio component goes here */}
                     <BrandBio />
+                    {/* BrandStats component goes here */}
                     <BrandStats/>
                     {/* BrandPost component goes here */}
+                    <BrandPost />
                 </main>
             </div>
         </Layout>
