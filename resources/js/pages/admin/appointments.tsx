@@ -2,7 +2,7 @@
 
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import { createColumns, Appointment } from "@/components/admin/appointments/columns";
 import { DataTable } from "@/components/admin/appointments/data-table";
 import { useState, useEffect } from 'react';
@@ -54,6 +54,62 @@ export default function Appointments({ appointments, flash, auth }: Props) {
         setIsViewModalOpen(true);
     };
 
+    const handleSetConfirmed = (appointment: Appointment) => {
+        router.post(route('appointments.setConfirmed', appointment.id),
+          {},
+          {
+            onSuccess: () => {
+              setToastMessage("Appointement status set to Confirmed!");
+              setToastType("success");
+              setShowToast(true);
+            },
+            onError: (errors) => {
+              console.error("Failed to set appointment confirmed:", errors);
+              setToastMessage("Failed to set appointment confirmed.");
+              setToastType("error");
+              setShowToast(true);
+            },
+          },
+        );
+      };
+
+    const handleSetCompleted = (appointment: Appointment) => {
+        router.post(route('appointments.setCompleted', appointment.id),
+          {},
+          {
+            onSuccess: () => {
+              setToastMessage("Appointement status set to Completed!");
+              setToastType("success");
+              setShowToast(true);
+            },
+            onError: (errors) => {
+              console.error("Failed to set appointment completed:", errors);
+              setToastMessage("Failed to set appointment completed.");
+              setToastType("error");
+              setShowToast(true);
+            },
+          },
+        );
+      };
+
+    const handleSetCancelled = (appointment: Appointment) => {
+        router.post(route('appointments.setCancelled', appointment.id),
+          {},
+          {
+            onSuccess: () => {
+              setToastMessage("Appointement status set to Cancelled!");
+              setToastType("success");
+              setShowToast(true);
+            },
+            onError: (errors) => {
+              console.error("Failed to set appointment cancelled:", errors);
+              setToastMessage("Failed to set appointment cancelled.");
+              setToastType("error");
+              setShowToast(true);
+            },
+          },
+        );
+      };
     useEffect(() => {
         setData(appointments);
     }, [appointments]);
@@ -77,7 +133,13 @@ export default function Appointments({ appointments, flash, auth }: Props) {
         }
     }, [showToast]);
 
-    const columns = createColumns(handleViewClick);
+    const columns = createColumns(
+        handleSetConfirmed,   
+        handleSetCompleted,   
+        handleSetCancelled,   
+        handleViewClick      
+    );
+
 
     return (
         <AppLayout breadcrumbs={breadcrumbs} user={auth.user}>

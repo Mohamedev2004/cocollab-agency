@@ -105,7 +105,7 @@ const PressHero: React.FC<PressHeroProps> = ({
             <Dialog open={showFormModal} onOpenChange={setShowFormModal}>
               <DialogTrigger asChild>
                 <button className="flex items-center justify-center px-6 py-2.5 bg-[var(--color-cocollab)] text-white font-semibold rounded-xl shadow-lg cursor-pointer transition duration-300 ease-in-out transform hover:opacity-90">
-                  Get Started Now
+                  Consult Us
                   <svg
                     className="w-5 h-5 ml-2"
                     fill="none"

@@ -46,7 +46,7 @@ export default function MailsPage({ auth }: MailsProps) {
   if (user.status === 'Inactive') {
     return (
       <div className="flex flex-col items-center justify-center h-screen gap-4 text-lg font-medium text-white">
-        <p className='text-center text-wrap'>Your account is inactive. Please contact support.</p>
+        <p className='text-center text-wrap text-black'>Your account is inactive. Please contact support.</p>
         <Link href={route('influencer.home')}>
           <Button variant="default"> <span><ArrowLeft /></span> Back</Button>
         </Link>

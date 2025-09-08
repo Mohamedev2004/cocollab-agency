@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('appointment_name');
             $table->string('appointment_phone');
-            $table->string('appointment_email')->nullable();
-            $table->string('appointment_message')->nullable();
+            $table->string('appointment_email');
+            $table->string('appointment_message');
+            $table->enum('status', ['Pending', 'Confirmed', 'Completed', 'Cancelled'])->default('Pending');
             $table->dateTime('appointment_date');
             $table->timestamps();
             $table->softDeletes();

@@ -1,5 +1,6 @@
 import AppLogoIcon from '@/components/app-logo-icon';
 import { Link } from '@inertiajs/react';
+import { ThemeProvider } from 'next-themes';
 import { type PropsWithChildren } from 'react';
 
 interface AuthLayoutProps {
@@ -10,6 +11,8 @@ interface AuthLayoutProps {
 
 export default function AuthSimpleLayout({ children, title, description }: PropsWithChildren<AuthLayoutProps>) {
     return (
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+
         <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
             <div className="w-full max-w-sm">
                 <div className="flex flex-col gap-8">
@@ -30,5 +33,6 @@ export default function AuthSimpleLayout({ children, title, description }: Props
                 </div>
             </div>
         </div>
+        </ThemeProvider>
     );
 }

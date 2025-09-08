@@ -17,5 +17,6 @@ class Appointment extends Model
         'appointment_phone',
         'appointment_date',
         'appointment_message',
+        'status',
     ];
 }

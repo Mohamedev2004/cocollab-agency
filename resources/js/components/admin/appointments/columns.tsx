@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Eye, MoreHorizontal } from "lucide-react";
+import { Eye, MoreHorizontal, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "../../data-table-column-header";
+import { Badge } from "@/components/ui/badge";
 
 export interface Appointment {
   id: number;
@@ -21,10 +22,14 @@ export interface Appointment {
   appointment_phone: string;
   appointment_date: string;
   appointment_message: string;
+  status: "Pending" | "Confirmed" | "Completed" | "Cancelled";
   created_at: string;
 }
 
 export const createColumns = (
+  onSetConfirmed: (appointement: Appointment) => void,
+  onSetCompleted: (appointement: Appointment) => void,
+  onSetCancelled: (appointement: Appointment) => void,
   onView: (appointment: Appointment) => void
 ): ColumnDef<Appointment>[] => [
   {
@@ -86,6 +91,31 @@ export const createColumns = (
     },
   },
   {
+    accessorKey: "status",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Status" />
+    ),
+    cell: ({ row }) => {
+      const status = row.original.status;
+
+      return (
+        <Badge
+          variant={
+            status === "Pending"
+              ? "secondary"
+              : status === "Confirmed"
+              ? "default"
+              : status === "Completed"
+              ? "outline"
+              : "destructive"
+          }
+        >
+          {status}
+        </Badge>
+      );
+    },
+  },
+  {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
@@ -103,6 +133,18 @@ export const createColumns = (
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => onView(appointment)}>
               <Eye className="mr-2 h-4 w-4" /> View
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onSetConfirmed(appointment)}>
+              <XCircle className="mr-2 h-4 w-4" />
+              Set Confirmed
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onSetCompleted(appointment)}>
+              <XCircle className="mr-2 h-4 w-4" />
+              Set Completed
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onSetCancelled(appointment)}>
+              <XCircle className="mr-2 h-4 w-4" />
+              Set Cancelled
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

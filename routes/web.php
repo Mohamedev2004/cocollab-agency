@@ -104,6 +104,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
         // Appointments
         Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+        Route::post('/appointments/{id}/confirmed', [AppointmentController::class, 'setConfirmed'])->name('appointments.setConfirmed');
+        Route::post('/appointments/{id}/completed', [AppointmentController::class, 'setCompleted'])->name('appointments.setCompleted');
+        Route::post('/appointments/{id}/cancelled', [AppointmentController::class, 'setCancelled'])->name('appointments.setCancelled');
+
 
         // Notifications
         Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');

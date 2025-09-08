@@ -24,8 +24,8 @@ class AppointmentController extends Controller
         $request->validate([
             'appointment_name' => 'required|string|max:255',
             'appointment_phone' => 'required|string|max:20',
-            'appointment_email' => 'nullable|email|max:255',
-            'appointment_message' => 'nullable|string',
+            'appointment_email' => 'required|email|max:255',
+            'appointment_message' => 'required|string',
             'appointment_date' => 'required|date',
         ]);
 
@@ -33,5 +33,32 @@ class AppointmentController extends Controller
 
         // Redirect back with a success flash message
         return redirect()->back()->with('success', 'Appointment booked successfully!');
+    }
+
+    public function setConfirmed($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->update(['status' => 'Confirmed']);
+
+        return back()->with('success', 'Appointment status set to Confirmed.');
+    }
+
+    public function setCompleted($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->update(['status' => 'Completed']);
+
+        return back()->with('success', 'Appointment status set to Completed.');
+    }
+
+    public function setCancelled($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->update(['status' => 'Cancelled']);
+
+        return back()->with('success', 'Appointment status set to Cancelled.');
     }
 }
