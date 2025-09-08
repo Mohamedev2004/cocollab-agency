@@ -10,15 +10,9 @@ import {
   Facebook,
   X,
 } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface InfluencerCardProps {
   name: string;
@@ -42,7 +36,7 @@ const defaultInfluencer: InfluencerCardProps = {
 };
 
 const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
-  const [open, setOpen] = useState(false);
+  const [showMessageBox, setShowMessageBox] = useState(false);
   const [message, setMessage] = useState("");
 
   const data: InfluencerCardProps = {
@@ -56,9 +50,9 @@ const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
 
   const handleSend = () => {
     if (!message.trim()) return;
-    console.log("Message sent:", message); // Replace with API call later
+    console.log("Message sent:", message);
     setMessage("");
-    setOpen(false);
+    setShowMessageBox(false);
   };
 
   return (
@@ -128,40 +122,49 @@ const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
         </div>
       </div>
 
-      {/* CTA with modal */}
-      <Button
-        onClick={() => setOpen(true)}
-        className="flex items-center gap-2 justify-center w-full py-2 px-6 
-          bg-[var(--color-cocollab)] text-white rounded-xl font-semibold cursor-pointer
-          shadow hover:bg-[var(--color-cocollab)]/90 transition"
-      >
-        <Send size={18} />
-        Send Message
-      </Button>
+      {/* CTA */}
+      {!showMessageBox && (
+        <Button
+          onClick={() => setShowMessageBox(true)}
+          className="flex items-center gap-2 justify-center w-full py-2 px-6 
+            bg-[var(--color-cocollab)] text-white rounded-xl font-semibold cursor-pointer
+            shadow hover:bg-[var(--color-cocollab)]/90 transition"
+        >
+          <Send size={18} />
+          Send Message
+        </Button>
+      )}
 
-      {/* Modal */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Send a Message to {data.name}</DialogTitle>
-          </DialogHeader>
-          <Textarea
-            placeholder="Write your message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={4}
-            className="mt-2"
-          />
-          <DialogFooter className="mt-4 flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleSend} className="bg-[var(--color-cocollab)] hover:bg-[var(--color-cocollab)]/90">
-              Send
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Animated Message Box */}
+      <AnimatePresence>
+        {showMessageBox && (
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="mt-4 flex flex-col gap-3"
+          >
+            <Textarea
+              placeholder={`Write a message to ${data.name}...`}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              rows={4}
+            />
+            <div className="flex gap-2 justify-end">
+              <Button variant="outline" onClick={() => setShowMessageBox(false)}>
+                Cancel
+              </Button>
+              <Button
+                onClick={handleSend}
+                className="bg-[var(--color-cocollab)] hover:bg-[var(--color-cocollab)]/90"
+              >
+                Send
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </aside>
   );
 };

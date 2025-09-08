@@ -10,7 +10,6 @@ import {
   Bar,
   XAxis,
   YAxis,
-  ResponsiveContainer,
   Cell,
 } from "recharts";
 
@@ -59,7 +58,7 @@ const InfluencerStats: React.FC = () => {
       ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {/* Audience Platforms Pie Chart */}
       <Card>
         <CardHeader className="items-center pb-0">
@@ -172,7 +171,6 @@ const InfluencerStats: React.FC = () => {
             }}
             className="w-full h-[250px]"
           >
-            <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={demoData}
                 layout="vertical"
@@ -209,7 +207,6 @@ const InfluencerStats: React.FC = () => {
                   ))}
                 </Bar>
               </BarChart>
-            </ResponsiveContainer>
           </ChartContainer>
         </CardContent>
         <CardFooter className="text-sm text-black font-medium text-center m-auto">
