@@ -202,7 +202,7 @@ export const createColumns = (
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => onDelete(user)}>
+                <DropdownMenuItem variant="destructive" onClick={() => onDelete(user)}>
                   <Trash2 className="mr-2 h-4 w-4" />
                   Delete
                 </DropdownMenuItem>

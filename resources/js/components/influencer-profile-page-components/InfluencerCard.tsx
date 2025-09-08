@@ -84,19 +84,19 @@ const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
         <div className="flex justify-around space-x-3 mt-8">
           <a
             href="#"
-            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition"
+            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-black transition"
           >
             <Instagram size={24} />
           </a>
           <a
             href="#"
-            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition"
+            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-black transition"
           >
             <Facebook size={24} />
           </a>
           <a
             href="#"
-            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition"
+            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-black transition"
           >
             <X size={24} />
           </a>
@@ -108,16 +108,16 @@ const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
         <div className="flex flex-col items-center">
           <div className="flex items-center gap-1">
             <Star size={18} className="text-yellow-500 fill-yellow-500" />
-            <span className="font-semibold">{data.stats.rating}</span>
+            <span className="font-semibold text-black">{data.stats.rating}</span>
           </div>
           <span className="text-xs text-gray-500 mt-1">Stars</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="font-semibold">{data.stats.followers}</span>
+          <span className="font-semibold text-black">{data.stats.followers}</span>
           <span className="text-xs text-gray-500 mt-1">Followers</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="font-semibold">{data.stats.posts}</span>
+          <span className="font-semibold text-black">{data.stats.posts}</span>
           <span className="text-xs text-gray-500 mt-1">Posts</span>
         </div>
       </div>
@@ -150,14 +150,15 @@ const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={4}
+              className="!bg-white text-black border border-gray-300"
             />
             <div className="flex gap-2 justify-end">
-              <Button variant="outline" onClick={() => setShowMessageBox(false)}>
+              <Button onClick={() => setShowMessageBox(false)} className="bg-white hover:opacity-80 border border-gray-300 text-black">
                 Cancel
               </Button>
               <Button
                 onClick={handleSend}
-                className="bg-[var(--color-cocollab)] hover:bg-[var(--color-cocollab)]/90"
+                className="bg-[var(--color-cocollab)] hover:bg-[var(--color-cocollab)]/90 text-white"
               >
                 Send
               </Button>

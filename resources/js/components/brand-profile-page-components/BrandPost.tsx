@@ -182,7 +182,7 @@ const InfluencerPost: React.FC = () => {
               placeholder="What's on your mind?"
               value={newCaption}
               onChange={(e) => setNewCaption(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 focus:ring-2 focus:ring-[var(--color-cocollab)] focus:outline-none p-3 text-sm resize-none"
+              className="w-full rounded-xl border border-gray-300 focus:ring-2 focus:ring-[var(--color-cocollab)] focus:outline-none p-3 text-sm resize-none !bg-white text-black"
               rows={3}
             />
             {croppedImage && (
@@ -192,8 +192,8 @@ const InfluencerPost: React.FC = () => {
                 className="w-40 h-auto object-cover rounded-xl border"
               />
             )}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-              <label className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border text-sm text-gray-600 hover:bg-gray-100 transition w-full sm:w-auto cursor-pointer">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-4">
+              <label className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-sm text-gray-600 hover:bg-gray-100 transition w-full sm:w-auto cursor-pointer">
                 <Image size={18} />
                 Upload Image
                 <input
@@ -220,7 +220,7 @@ const InfluencerPost: React.FC = () => {
         {posts.map((post) => (
           <div
             key={post.id}
-            className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden w-full"
+            className="bg-white rounded-2xl shadow-sm overflow-hidden w-full"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4">
@@ -230,7 +230,7 @@ const InfluencerPost: React.FC = () => {
                   alt={post.user.name}
                   className="w-10 h-10 rounded-full object-cover"
                 />
-                <div className="min-w-0">
+                <div className="min-w-0 text-black">
                   <p className="text-sm font-semibold truncate">
                     {post.user.name}
                   </p>
@@ -298,7 +298,7 @@ const InfluencerPost: React.FC = () => {
 
             {/* Caption */}
             <div className="px-4 pb-4">
-              <p className="text-sm break-words">
+              <p className="text-sm break-words text-black">
                 <span className="font-semibold">{post.user.name}</span> <br />
                 {post.caption}
               </p>

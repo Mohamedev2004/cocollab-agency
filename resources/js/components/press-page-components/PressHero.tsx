@@ -123,14 +123,15 @@ const PressHero: React.FC<PressHeroProps> = ({
                 </button>
               </DialogTrigger>
 
-              <DialogContent className="sm:max-w-lg overflow-visible">
+              <DialogContent className="sm:max-w-lg overflow-visible bg-white text-black [&>button]:text-black [&>button:hover]:text-gray-700">
                 <DialogHeader>
-                  <DialogTitle>Book an Appointment</DialogTitle>
+                  <DialogTitle className="text-black">Book an Appointment</DialogTitle>
                 </DialogHeader>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <Input
                     type="text"
+                    className="text-black"
                     placeholder="Name"
                     value={data.appointment_name}
                     onChange={(e) =>
@@ -144,6 +145,7 @@ const PressHero: React.FC<PressHeroProps> = ({
 
                   <Input
                     type="tel"
+                    className="text-black"
                     placeholder="Phone (10 digits)"
                     value={data.appointment_phone}
                     onChange={(e) =>
@@ -161,6 +163,7 @@ const PressHero: React.FC<PressHeroProps> = ({
 
                   <Input
                     type="email"
+                    className="text-black"
                     placeholder="Email"
                     value={data.appointment_email}
                     onChange={(e) =>
@@ -177,22 +180,22 @@ const PressHero: React.FC<PressHeroProps> = ({
                     onChange={(e) =>
                       setData("appointment_message", e.target.value)
                     }
-                    className="resize-none max-h-32"
+                    className="resize-none max-h-32 text-black !bg-white "
                   />
 
                   {/* Date + Time */}
                   <div className="flex gap-2">
                     {/* Date Popover */}
                     <div className="flex flex-col gap-1">
-                      <label className="text-sm font-medium">Date</label>
+                      <label className="text-sm font-medium text-black">Date</label>
                       <Popover
                         open={datePopoverOpen}
                         onOpenChange={setDatePopoverOpen}
                       >
                         <PopoverTrigger asChild>
                           <Button
-                            variant="outline"
-                            className="w-32 justify-between font-normal"
+                          variant={"outline"}
+                            className="w-32 justify-between font-normal border border-gray-300 text-black !bg-white"
                           >
                             {date ? format(date, "dd/MM/yyyy") : "Select date"}
                             <CalendarIcon className="w-4 h-4 ml-1" />
@@ -216,12 +219,12 @@ const PressHero: React.FC<PressHeroProps> = ({
 
                     {/* Time */}
                     <div className="flex flex-col gap-1">
-                      <label className="text-sm font-medium">Time</label>
+                      <label className="text-sm font-medium text-black">Time</label>
                       <Input
                         type="time"
                         value={time}
                         onChange={(e) => setTime(e.target.value)}
-                        className="w-[120px]"
+                        className="w-[120px] text-black"
                         required
                       />
                     </div>
@@ -232,7 +235,7 @@ const PressHero: React.FC<PressHeroProps> = ({
 
                   <Button
                     type="submit"
-                    className="w-full bg-[var(--color-cocollab)] text-white"
+                    className="w-full bg-[var(--color-cocollab)] text-white hover:bg-[var(--color-cocollab)]/80 cursor-pointer"
                     disabled={processing}
                   >
                     {processing ? "Saving..." : "Save Appointment"}
