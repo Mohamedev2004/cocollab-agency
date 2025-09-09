@@ -107,7 +107,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::post('/appointments/{id}/confirmed', [AppointmentController::class, 'setConfirmed'])->name('appointments.setConfirmed');
         Route::post('/appointments/{id}/completed', [AppointmentController::class, 'setCompleted'])->name('appointments.setCompleted');
         Route::post('/appointments/{id}/cancelled', [AppointmentController::class, 'setCancelled'])->name('appointments.setCancelled');
-
+        Route::post('/appointments/confirm-many', [AppointmentController::class, 'confirmMany'])->name('appointments.confirmMany');
+        Route::post('/appointments/cancel-many', [AppointmentController::class, 'cancelMany'])->name('appointments.cancelMany');
+        Route::post('/appointments/complete-many', [AppointmentController::class, 'completeMany'])->name('appointments.completeMany');
+        Route::get('/appointments/export', [AppointmentController::class, 'export'])->name('appointments.export');
 
         // Notifications
         Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');

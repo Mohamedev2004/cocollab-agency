@@ -26,9 +26,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { DataTablePagination } from "@/components/data-table-pagination" // ✅ import it
+import { DataTablePagination } from "@/components/data-table-pagination"
 import { DataTableViewOptions } from "../../data-table-view-options"
 import { Label } from "../../ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { CheckCheck, CircleCheck, CircleX, Timer } from "lucide-react"
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -70,19 +73,49 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div>
-      <div className="flex items-center py-4 space-x-2">
-        <Label htmlFor="Search" className="whitespace-nowrap">Search</Label>
-        <Input
-          placeholder="Search appointment's name..."
-          value={(table.getColumn("appointment_name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("appointment_name")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+    <div className="w-full">
+      {/* Top Filters & View Options */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-2 py-4"> 
+          {/* Filters: Search + Status */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full md:w-auto flex-wrap">
+              {/* Search */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 flex-1 min-w-[200px]">
+                  <Label htmlFor="Search" className="whitespace-nowrap">Search</Label>
+                  <Input
+                    placeholder="Search appointment's name..."
+                    value={(table.getColumn("appointment_name")?.getFilterValue() as string) ?? ""}
+                    onChange={(event) =>
+                      table.getColumn("appointment_name")?.setFilterValue(event.target.value)
+                    }
+                    className="w-full sm:w-64"
+                  />
+              </div>
 
-        <DataTableViewOptions table={table} />
+              {/* Status Filter */}
+              <div className="flex flex-col space-x-2 sm:flex-row items-start sm:items-center gap-2 sm:gap-1 min-w-[180px]">
+                  <Label htmlFor="status_filter" className="whitespace-nowrap">Filter by Status</Label>
+                  <Select
+                      onValueChange={(value) => table.getColumn("status")?.setFilterValue(value)}
+                      value={(table.getColumn("status")?.getFilterValue() as string) ?? "all"}
+                  >
+                      <SelectTrigger className="w-full sm:w-40">
+                          <SelectValue placeholder="All Statuses" />
+                      </SelectTrigger>
+                      <SelectContent>
+                          <SelectItem value="all">All Status</SelectItem>
+                          <SelectItem value="Pending"> <span><Timer/></span> Pending</SelectItem>
+                          <SelectItem value="Cancelled"> <span><CircleX/></span> Cancelled</SelectItem>
+                          <SelectItem value="Confirmed"> <span><CircleCheck/></span> Confirmed</SelectItem>
+                          <SelectItem value="Completed"> <span><CheckCheck/></span> Completed</SelectItem>
+                      </SelectContent>
+                  </Select>
+              </div>
+          </div>
+
+          {/* Table View Options */}
+          <div className="flex justify-start md:justify-end w-full md:w-auto">
+              <DataTableViewOptions table={table} />
+          </div>
       </div>
 
       <div className="text-muted-foreground flex-1 mb-2 text-sm">

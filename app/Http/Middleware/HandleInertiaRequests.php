@@ -56,6 +56,10 @@ class HandleInertiaRequests extends Middleware
             'unreadNotificationsCount' => DB::table('notifications')
                 ->where('read', false)
                 ->count(),
+            
+            'pendingAppointments' => DB::table('appointments')
+                ->where('status', 'Pending')
+                ->count(),
         ];
     }
 }

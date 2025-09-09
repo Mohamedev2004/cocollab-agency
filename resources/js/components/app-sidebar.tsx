@@ -12,14 +12,8 @@ import {
 import { type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import {
-  Sticker,
   LayoutGrid,
-  MailCheck,
-  MessageSquareText,
-  User,
-  Clock,
-  BellPlus,
-  CalendarDays,
+  Folder,
 } from 'lucide-react';
 import AppLogo from './app-logo';
 
@@ -35,35 +29,44 @@ export function AppSidebar({ user }: AppSidebarProps) {
     unreadNotificationsCount: number;
   };
 
+  const { pendingAppointments } = usePage().props as unknown as {
+    pendingAppointments: number;
+  }
+
   let mainNavItems: NavItem[] = [];
 
   if (user.role === 'admin') {
     mainNavItems = [
       { title: 'Dashboard', href: route('dashboard'), icon: LayoutGrid },
-      { title: 'Users', href: route('users.index'), icon: User },
-      { title: 'Testimonials', href: route('testimonials.index'), icon: Sticker },
-      { title: 'Contacts', href: route('contacts.index'), icon: MessageSquareText },
-      { title: 'Newsletters', href: route('newsletters.index'), icon: MailCheck },
-      { title: 'Countdown', href: route('countdown.index'), icon: Clock },
-      { title: 'Appointments', href: route('appointments.index'), icon: CalendarDays },
+      { title: 'Users', href: route('users.index'), icon: Folder },
+      { title: 'Testimonials', href: route('testimonials.index'), icon: Folder },
+      { title: 'Contacts', href: route('contacts.index'), icon: Folder },
+      { title: 'Newsletters', href: route('newsletters.index'), icon: Folder },
+      { title: 'Countdown', href: route('countdown.index'), icon: Folder },
+      { 
+        title: 'Appointments', 
+        href: route('appointments.index'), 
+        icon: Folder,
+        badge: pendingAppointments
+      },
       {
         title: 'Notifications',
         href: route('notifications.index'),
-        icon: BellPlus,
+        icon: Folder,
         badge: unreadNotificationsCount,
       },
     ];
   } else if (user.role === 'influencer') {
     mainNavItems = [
       { title: 'Dashboard', href: route('influencer.dashboard'), icon: LayoutGrid },
-      { title: 'Mails', href: route('influencer.mails'), icon: Sticker },
-      { title: 'Messages', href: route('influencer.home'), icon: MessageSquareText },
+      { title: 'Mails', href: route('influencer.mails'), icon: Folder },
+      { title: 'Messages', href: route('influencer.home'), icon: Folder },
     ];
   } else if (user.role === 'brand') {
     mainNavItems = [
       { title: 'Dashboard', href: route('brand.dashboard'), icon: LayoutGrid },
-      { title: 'My Campaigns', href: route('brand.home'), icon: Sticker },
-      { title: 'Contacts', href: route('brand.home'), icon: MessageSquareText },
+      { title: 'My Campaigns', href: route('brand.home'), icon: Folder },
+      { title: 'Contacts', href: route('brand.home'), icon: Folder },
     ];
   }
 

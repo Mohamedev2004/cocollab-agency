@@ -1,7 +1,7 @@
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
-import { Eye, MoreHorizontal, XCircle } from "lucide-react";
+import { ColumnDef, FilterFn } from "@tanstack/react-table";
+import { CheckCircle, CheckCircle2, Eye, MoreHorizontal, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -25,6 +25,14 @@ export interface Appointment {
   status: "Pending" | "Confirmed" | "Completed" | "Cancelled";
   created_at: string;
 }
+
+const statusFilterFn: FilterFn<Appointment> = (row, columnId, filterValue) => {
+  if (filterValue === "all") {
+    return true;
+  }
+  const rowValue = row.getValue(columnId) as string;
+  return rowValue === filterValue;
+};
 
 export const createColumns = (
   onSetConfirmed: (appointement: Appointment) => void,
@@ -95,6 +103,7 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
+    filterFn: statusFilterFn,
     cell: ({ row }) => {
       const status = row.original.status;
 
@@ -102,12 +111,12 @@ export const createColumns = (
         <Badge
           variant={
             status === "Pending"
-              ? "secondary"
+              ? "pending"
               : status === "Confirmed"
-              ? "default"
+              ? "success"
               : status === "Completed"
-              ? "outline"
-              : "destructive"
+              ? "completed"
+              : "cancelled"
           }
         >
           {status}
@@ -134,18 +143,28 @@ export const createColumns = (
             <DropdownMenuItem onClick={() => onView(appointment)}>
               <Eye className="mr-2 h-4 w-4" /> View
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onSetConfirmed(appointment)}>
+            {appointment.status === "Pending" && (
+              <DropdownMenuItem onClick={() => onSetConfirmed(appointment)}>
+                <CheckCircle2 className="mr-2 h-4 w-4" />
+                Set Confirmed
+              </DropdownMenuItem>
+            )}
+            {/* <DropdownMenuItem onClick={() => onSetConfirmed(appointment)}>
               <XCircle className="mr-2 h-4 w-4" />
               Set Confirmed
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
+            {appointment.status === "Confirmed" && (
             <DropdownMenuItem onClick={() => onSetCompleted(appointment)}>
-              <XCircle className="mr-2 h-4 w-4" />
+              <CheckCircle className="mr-2 h-4 w-4" />
               Set Completed
             </DropdownMenuItem>
+            )}
+            {appointment.status === "Pending" && (
             <DropdownMenuItem onClick={() => onSetCancelled(appointment)}>
               <XCircle className="mr-2 h-4 w-4" />
               Set Cancelled
             </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       );
