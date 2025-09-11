@@ -104,6 +104,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
         // Appointments
         Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+        Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
         Route::post('/appointments/{id}/confirmed', [AppointmentController::class, 'setConfirmed'])->name('appointments.setConfirmed');
         Route::post('/appointments/{id}/completed', [AppointmentController::class, 'setCompleted'])->name('appointments.setCompleted');
         Route::post('/appointments/{id}/cancelled', [AppointmentController::class, 'setCancelled'])->name('appointments.setCancelled');
@@ -183,9 +184,9 @@ Route::post('/contacts', [ContactController::class, 'store'])
     ->middleware('countdown') // optional, if you still want countdown check
     ->name('contacts.storing');
 
-    Route::post('/appointments', [AppointmentController::class, 'store'])
-        ->middleware('countdown') // optional, if you still want countdown check
-        ->name('appointments.storing');
+Route::post('/appointments', [AppointmentController::class, 'store'])
+    ->middleware('countdown') // optional, if you still want countdown check
+    ->name('appointments.storing');
 
 
 

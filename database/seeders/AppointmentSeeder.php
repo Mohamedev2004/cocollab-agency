@@ -10,6 +10,6 @@ class AppointmentSeeder extends Seeder
     public function run(): void
     {
         // Create 20 fake appointments
-        Appointment::factory()->count(20)->create();
+        Appointment::factory()->count(50)->create();
     }
 }

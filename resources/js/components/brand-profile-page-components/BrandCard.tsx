@@ -148,7 +148,7 @@ const BrandCard: React.FC<Partial<BrandCardProps>> = (props) => {
               className="!bg-white text-black border border-gray-300"
             />
             <div className="flex gap-2 justify-end">
-              <Button onClick={() => setShowMessageBox(false)} className="bg-white hover:opacity-80 border border-gray-300 text-black">
+              <Button variant="outline" onClick={() => setShowMessageBox(false)} className="">
                 Cancel
               </Button>
               <Button

@@ -127,18 +127,24 @@ export default function Notifications({ notifications: initial, auth }: Notifica
                 <div className="space-y-4">
                   {unread.slice(0, unreadCount).map((n) => (
                     <Card key={n.id} className="bg-background shadow-sm">
-                      <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
-                        <div className="space-y-1">
-                          <CardTitle className="text-base font-semibold">{n.title}</CardTitle>
-                          <p className="text-sm text-muted-foreground">{n.message}</p>
-                        </div>
-                        <Button size="sm" variant="default" className="shrink-0" onClick={() => markAsRead(n.id)}>
+                      <CardHeader className="space-y-1 pb-2">
+                        <CardTitle className="text-base font-semibold">{n.title}</CardTitle>
+                        <p className="text-sm text-muted-foreground">{n.message}</p>
+                      </CardHeader>
+
+                        <Button 
+                          size="sm" 
+                          variant="default" 
+                          className="self-start ml-6"
+                          onClick={() => markAsRead(n.id)}
+                        >
                           Mark as Read
                         </Button>
-                      </CardHeader>
-                      <CardContent className="flex justify-between items-center pt-2 border-t text-xs text-muted-foreground">
-                        <span>{formatDate(n.created_at)}</span>
-                        <span className="text-primary">Unread</span>
+                      <CardContent className="flex flex-col justify-between pt-2 border-t text-xs text-muted-foreground">
+                        <div className="flex justify-between items-center mb-2">
+                          <span>{formatDate(n.created_at)}</span>
+                          <span className="text-primary">Unread</span>
+                        </div>
                       </CardContent>
                     </Card>
                   ))}

@@ -30,7 +30,7 @@ import { DataTablePagination } from "@/components/data-table-pagination"
 import { DataTableViewOptions } from "../../data-table-view-options"
 import { Label } from "../../ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CheckCheck, CircleCheck, CircleX, Timer } from "lucide-react"
+import { CheckSquare, CircleCheck, CircleX, Timer } from "lucide-react"
 
 
 interface DataTableProps<TData, TValue> {
@@ -106,7 +106,7 @@ export function DataTable<TData, TValue>({
                           <SelectItem value="Pending"> <span><Timer/></span> Pending</SelectItem>
                           <SelectItem value="Cancelled"> <span><CircleX/></span> Cancelled</SelectItem>
                           <SelectItem value="Confirmed"> <span><CircleCheck/></span> Confirmed</SelectItem>
-                          <SelectItem value="Completed"> <span><CheckCheck/></span> Completed</SelectItem>
+                          <SelectItem value="Completed"> <span><CheckSquare/></span> Completed</SelectItem>
                       </SelectContent>
                   </Select>
               </div>

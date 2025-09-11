@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef, FilterFn } from "@tanstack/react-table";
-import { CheckCircle, CheckCircle2, Eye, MoreHorizontal, XCircle } from "lucide-react";
+import { CheckCircle, CheckCircle2, CheckSquare, Clock, Eye, MoreHorizontal, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -107,18 +107,26 @@ export const createColumns = (
     cell: ({ row }) => {
       const status = row.original.status;
 
+      // Map each status to an icon
+      const statusIcon = 
+        status === "Pending" ? <Clock className="w-4 h-4 mr-1" /> :
+        status === "Confirmed" ? <CheckCircle className="w-4 h-4 mr-1" /> :
+        status === "Completed" ? <CheckSquare className="w-4 h-4 mr-1" /> :
+        <XCircle className="w-4 h-4 mr-1" />; // Cancelled
+
+      // Map each status to a badge variant
+      const badgeVariant =
+        status === "Pending"
+          ? "pending"
+          : status === "Confirmed"
+          ? "success"
+          : status === "Completed"
+          ? "completed"
+          : "cancelled";
+
       return (
-        <Badge
-          variant={
-            status === "Pending"
-              ? "pending"
-              : status === "Confirmed"
-              ? "success"
-              : status === "Completed"
-              ? "completed"
-              : "cancelled"
-          }
-        >
+        <Badge variant={badgeVariant} className="flex items-center">
+          {statusIcon}
           {status}
         </Badge>
       );
