@@ -24,7 +24,7 @@ const BrandBio: React.FC = () => {
       </div>
 
       {/* Description / Storytelling */}
-      <p className="text-sm text-gray-700 font-light leading-relaxed mb-6">
+      <p className="text-sm text-gray-700 font-light leading-relaxed mb-6 text-justify">
         {brandData.description}
       </p>
 

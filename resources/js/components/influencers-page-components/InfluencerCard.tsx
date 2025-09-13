@@ -162,6 +162,7 @@ const InfluencerCard: React.FC<InfluencerProps> = ({
       {/* Influencer image section */}
       <div  className="relative p-3">
         <img
+          loading="lazy"
           src={image}
           alt={`Profile of ${name}`}
           className="w-full h-auto object-cover rounded-2xl"

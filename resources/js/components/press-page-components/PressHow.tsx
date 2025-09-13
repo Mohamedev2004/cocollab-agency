@@ -64,6 +64,7 @@ const PressHow = () => {
 
             <TabsContent value="feature-1">
               <img
+                loading="lazy"
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                 alt="Target the right audience"
                 className="aspect-video w-full h-150 rounded-md object-cover"
@@ -71,6 +72,7 @@ const PressHow = () => {
             </TabsContent>
             <TabsContent value="feature-2">
               <img
+                loading="lazy"
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
                 alt="Collaborate on your narrative"
                 className="aspect-video w-full h-150 rounded-md object-cover"
@@ -78,6 +80,7 @@ const PressHow = () => {
             </TabsContent>
             <TabsContent value="feature-3">
               <img
+                loading="lazy"
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg"
                 alt="Amplify your presence"
                 className="aspect-video w-full h-150 rounded-md object-cover"

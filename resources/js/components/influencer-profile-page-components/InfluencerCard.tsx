@@ -60,6 +60,7 @@ const InfluencerCard: React.FC<Partial<InfluencerCardProps>> = (props) => {
       {/* Profile Image with Bookmark */}
       <div className="relative">
         <img
+          loading="lazy"
           src={data.image}
           alt={data.name}
           className="w-full h-auto rounded-2xl object-cover"

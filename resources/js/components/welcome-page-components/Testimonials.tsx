@@ -90,6 +90,7 @@ const Testimonials: React.FC = () => {
                 <div className="flex items-center mt-auto pt-4 border-t border-purple-600/50">
                   {testimonial.avatar && (
                     <img
+                      loading="lazy"
                       src={testimonial.avatar}
                       alt={testimonial.author}
                       className="w-12 h-12 rounded-full mr-4 object-cover border-2 border-purple-400"

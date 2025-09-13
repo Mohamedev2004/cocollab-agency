@@ -248,6 +248,7 @@ const PressHero: React.FC<PressHeroProps> = ({
           {/* Right Side Image */}
           {image && (
             <img
+              loading="lazy"
               src={image.src}
               alt={image.alt}
               className="max-h-126 w-full rounded-md object-cover"

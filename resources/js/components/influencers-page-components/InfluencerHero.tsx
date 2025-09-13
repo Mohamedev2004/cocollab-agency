@@ -110,6 +110,7 @@ const InfluencerHero = ({
           </div>
           <div className="flex" >
             <img
+              loading="lazy"
               src="/assets/InfluencerHero.jpg"
               alt="placeholder hero"
               className="max-h-[600px] w-full rounded-lg object-cover lg:max-h-[800px]"

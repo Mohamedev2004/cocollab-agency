@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import {
   Image,
   Plus,
@@ -43,77 +44,151 @@ interface Post {
     avatar: string;
   };
 }
-const dummyPosts = [
-    {
-      id: 1,
-      image: "/assets/influencers/post1.png",
-      caption: "Feeling creative today! 🎨✨ The best art is an expression of the soul. What are you creating?",
-      likes: 1245,
-      user: {
-        name: "Sam Guy",
-        username: "samguy",
-        avatar: "/assets/influencers/3.jpg",
-      },
+
+// Dummy data (pretend from backend)
+const dummyPosts: Post[] = [
+  {
+    id: 1,
+    image: "/assets/influencers/post1.png",
+    caption: "Feeling creative today! 🎨✨",
+    likes: 1245,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
     },
-    {
-      id: 2,
-      image: "/assets/influencers/post2.png",
-      caption: "Sunday vibes are all about relaxing with a good book and a warm cup of coffee. ☕📚 What's your favorite book right now?",
-      likes: 876,
-      user: {
-        name: "Sam Guy",
-        username: "samguy",
-        avatar: "/assets/influencers/3.jpg",
-      },
+  },
+  {
+    id: 2,
+    image: "/assets/influencers/post2.png",
+    caption: "Sunday vibes ☕📚",
+    likes: 876,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
     },
-    {
-      id: 3,
-      image: "/assets/influencers/post3.png",
-      caption: "Out and about exploring the city! 🏙️ There's so much beauty to find in the small details. #citylife #urbanexplorer",
-      likes: 2109,
-      user: {
-        name: "Sam Guy",
-        username: "samguy",
-        avatar: "/assets/influencers/3.jpg",
-      },
+  },
+  {
+    id: 3,
+    image: "/assets/influencers/post3.png",
+    caption: "Exploring the city 🏙️",
+    likes: 2109,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
     },
-    {
-      id: 4,
-      image: "/assets/influencers/post4.png",
-      caption: "A little sneak peek at my new project! It’s been a lot of work, but I'm so excited to share it with you all soon! 🤩",
-      likes: 1532,
-      user: {
-        name: "Sam Guy",
-        username: "samguy",
-        avatar: "/assets/influencers/3.jpg",
-      },
+  },
+  {
+    id: 4,
+    image: "/assets/influencers/post4.png",
+    caption: "Sneak peek at my new project 🤩",
+    likes: 1532,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
     },
-    {
-      id: 5,
-      image: "/assets/influencers/post5.png",
-      caption: "Enjoying the sunset and reflecting on the week. 🌅 Grateful for all the amazing opportunities and connections. #gratitude #sunsetlover",
-      likes: 981,
-      user: {
-        name: "Sam Guy",
-        username: "samguy",
-        avatar: "/assets/influencers/3.jpg",
-      },
+  },
+  {
+    id: 5,
+    image: "/assets/influencers/post5.png",
+    caption: "Enjoying the sunset 🌅",
+    likes: 981,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
     },
-    {
-      id: 6,
-      image: "/assets/influencers/post6.png",
-      caption: "My happy place. Nothing beats a quiet afternoon creating something new. What's your favorite hobby? 🤔",
-      likes: 1899,
-      user: {
-        name: "Sam Guy",
-        username: "samguy",
-        avatar: "/assets/influencers/3.jpg",
-      },
+  },
+  {
+    id: 6,
+    image: "/assets/influencers/post6.png",
+    caption: "My happy place 🎶",
+    likes: 1899,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
     },
-  ];
+  },
+  {
+    id: 1,
+    image: "/assets/influencers/post1.png",
+    caption: "Feeling creative today! 🎨✨",
+    likes: 1245,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
+    },
+  },
+  {
+    id: 2,
+    image: "/assets/influencers/post2.png",
+    caption: "Sunday vibes ☕📚",
+    likes: 876,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
+    },
+  },
+  {
+    id: 3,
+    image: "/assets/influencers/post3.png",
+    caption: "Exploring the city 🏙️",
+    likes: 2109,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
+    },
+  },
+  {
+    id: 4,
+    image: "/assets/influencers/post4.png",
+    caption: "Sneak peek at my new project 🤩",
+    likes: 1532,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
+    },
+  },
+  {
+    id: 5,
+    image: "/assets/influencers/post5.png",
+    caption: "Enjoying the sunset 🌅",
+    likes: 981,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
+    },
+  },
+  {
+    id: 6,
+    image: "/assets/influencers/post6.png",
+    caption: "My happy place 🎶",
+    likes: 1899,
+    user: {
+      name: "Sam Guy",
+      username: "samguy",
+      avatar: "/assets/influencers/3.jpg",
+    },
+  },
+];
+
+const PAGE_SIZE = 3; // 👈 number of posts per batch
 
 const InfluencerPost: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>(dummyPosts);
+  const [allPosts] = useState<Post[]>(dummyPosts); // pretend backend
+  const [posts, setPosts] = useState<Post[]>(allPosts.slice(0, PAGE_SIZE));
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
   const [newCaption, setNewCaption] = useState("");
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
@@ -121,6 +196,22 @@ const InfluencerPost: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [croppedImage, setCroppedImage] = useState<File | null>(null);
   const [isCropOpen, setIsCropOpen] = useState(false);
+
+  // Infinite scroll fetch function
+  const fetchMorePosts = () => {
+    const nextPage = page + 1;
+    const start = page * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+
+    const newPosts = allPosts.slice(start, end);
+
+    setPosts((prev) => [...prev, ...newPosts]);
+    setPage(nextPage);
+
+    if (end >= allPosts.length) {
+      setHasMore(false); // no more posts
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -158,7 +249,7 @@ const InfluencerPost: React.FC = () => {
   };
 
   const handleConfirmDelete = () => {
-    console.log("Deleted post:", deleteId);
+    setPosts(posts.filter((p) => p.id !== deleteId));
     setDeleteId(null);
   };
 
@@ -215,97 +306,101 @@ const InfluencerPost: React.FC = () => {
         </div>
       </div>
 
-      {/* Posts Feed */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {posts.map((post) => (
-          <div
-            key={post.id}
-            className="bg-white rounded-2xl shadow-sm overflow-hidden w-full"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between p-4">
-              <div className="flex items-center gap-3 text-black">
-                <img
-                  src={post.user.avatar}
-                  alt={post.user.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold truncate">
-                    {post.user.name}
-                  </p>
-                  <p className="text-xs text-gray-500 truncate">
-                    @{post.user.username}
-                  </p>
+      {/* Posts Feed with Infinite Scroll */}
+      <InfiniteScroll
+        dataLength={posts.length}
+        next={fetchMorePosts}
+        hasMore={hasMore}
+        loader={<p className="text-center py-4">Loading more posts...</p>}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {posts.map((post) => (
+            <div
+              key={post.id}
+              className="bg-white rounded-2xl shadow-sm overflow-hidden w-full"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-4">
+                <div className="flex items-center gap-3 text-black">
+                  <img
+                    src={post.user.avatar}
+                    alt={post.user.name}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold truncate">{post.user.name}</p>
+                    <p className="text-xs text-gray-500 truncate">@{post.user.username}</p>
+                  </div>
                 </div>
+
+                {/* Dropdown Menu */}
+                <DropdownMenu modal={false}>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 rounded-lg"
+                    >
+                      <MoreHorizontal size={20} className="text-gray-600" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" side="left" className="w-40">
+                    <DropdownMenuItem
+                      onClick={() => handleArchive(post.id)}
+                      className="cursor-pointer"
+                    >
+                      <Archive className="mr-2 h-4 w-4" />
+                      Archive
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      variant="destructive"
+                      onClick={() => setDeleteId(post.id)}
+                      className="cursor-pointer text-red-600"
+                    >
+                      <Trash className="mr-2 h-4 w-4" />
+                      Delete
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
 
-              {/* Dropdown Menu */}
-              <DropdownMenu modal={false}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8 rounded-lg"
-                  >
-                    <MoreHorizontal size={20} className="text-gray-600" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" side="left" className="w-40">
-                  <DropdownMenuItem
-                    onClick={() => handleArchive(post.id)}
-                    className="cursor-pointer"
-                  >
-                    <Archive className="mr-2 h-4 w-4" />
-                    Archive
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    variant="destructive"
-                    onClick={() => setDeleteId(post.id)}
-                    className="cursor-pointer text-red-600"
-                  >
-                    <Trash className="mr-2 h-4 w-4" />
-                    Delete
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+              {/* Post Image */}
+              <ImageZoom>
+                <img
+                  src={post.image}
+                  alt={post.caption}
+                  loading="lazy" // 👈 lazy load images
+                  className="w-full h-auto object-cover"
+                />
+              </ImageZoom>
 
-            {/* Post Image */}
-            <ImageZoom>
-              <img
-                src={post.image}
-                alt={post.caption}
-                className="w-full h-auto object-cover"
-              />
-            </ImageZoom>
-
-            {/* Actions */}
-            <div className="flex items-center justify-between px-4 py-3 text-gray-600">
-              <span className="flex items-center text-sm gap-1">
-                <Heart
+              {/* Actions */}
+              <div className="flex items-center justify-between px-4 py-3 text-gray-600">
+                <span className="flex items-center text-sm gap-1">
+                  <Heart
+                    size={20}
+                    className="cursor-pointer hover:text-black transition"
+                  />
+                  {post.likes}
+                </span>
+                <Bookmark
                   size={20}
                   className="cursor-pointer hover:text-black transition"
                 />
-                {post.likes}
-              </span>
-              <Bookmark
-                size={20}
-                className="cursor-pointer hover:text-black transition"
-              />
-            </div>
+              </div>
 
-            {/* Caption */}
-            <div className="px-4 pb-4">
-              <p className="text-sm break-words text-black">
-                <span className="font-semibold">{post.user.name}</span> <br />
-                {post.caption}
-              </p>
+              {/* Caption */}
+              <div className="px-4 pb-4">
+                <p className="text-sm break-words text-black">
+                  <span className="font-semibold">{post.user.name}</span> <br />
+                  {post.caption}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </InfiniteScroll>
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={deleteId !== null} onOpenChange={() => setDeleteId(null)}>

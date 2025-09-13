@@ -438,6 +438,7 @@ export default function Testimonials({ testimonials, flash, auth }: Props) {
                                         <div className="mt-4 flex flex-col space-y-4">
                                             <Label>Image Preview</Label>
                                             <img
+                                                loading="lazy"
                                                 src={createImagePreview}
                                                 alt="Image Preview"
                                                 className="w-24 h-full object-cover rounded-sm shadow-md"
@@ -522,6 +523,7 @@ export default function Testimonials({ testimonials, flash, auth }: Props) {
                                             <div className="flex flex-col space-y-2 items-center">
                                                 <Label>Current Image</Label>
                                                 <img
+                                                    loading="lazy"
                                                     src={`/storage/${selectedTestimonial.testimonial_image}`}
                                                     alt="Current Testimonial Image"
                                                     className="w-24 h-full object-cover rounded-md shadow-md"
@@ -532,6 +534,7 @@ export default function Testimonials({ testimonials, flash, auth }: Props) {
                                             <div className="flex flex-col space-y-4 items-center">
                                                 <Label>New Image Preview</Label>
                                                 <img
+                                                    loading="lazy"
                                                     src={updateImagePreview}
                                                     alt="New Image Preview"
                                                     className="w-24 h-full object-cover rounded-md shadow-md"
@@ -542,6 +545,7 @@ export default function Testimonials({ testimonials, flash, auth }: Props) {
                                             <div className="flex flex-col space-y-4 items-center">
                                                 <Label>Current Image</Label>
                                                 <img
+                                                    loading="lazy"
                                                     src={`/storage/${selectedTestimonial.testimonial_image}`}
                                                     alt="Current Testimonial Image"
                                                     className="w-24 h-full object-cover rounded-md shadow-md"

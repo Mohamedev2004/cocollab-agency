@@ -150,6 +150,7 @@ export default function ImageCropper({
               >
                 <img
                   ref={imgRef}
+                  loading="lazy"
                   alt="Crop me"
                   src={imgSrc}
                   style={{ maxHeight: '400px', maxWidth: '100%' }}

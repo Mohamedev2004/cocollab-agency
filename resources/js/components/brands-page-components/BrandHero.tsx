@@ -138,12 +138,14 @@ const BrandHero = ({
         <div className="relative z-10">
           <div className="absolute top-2.5 left-1/2! h-[92%]! w-[69%]! -translate-x-[52%] overflow-hidden">
             <img
+              loading="lazy"
               src={image.src}
               alt={image.alt}
               className="size-full object-cover object-[50%_0%]"
             />
           </div>
           <img
+            loading="lazy"
             className="relative z-10"
             src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/mockups/phone-2.png"
             width={450}

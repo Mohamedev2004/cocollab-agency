@@ -42,6 +42,7 @@ const Partners: React.FC = () => {
                   className="flex items-center justify-center mx-6 sm:mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
                 >
                   <img
+                    loading="lazy"
                     src={logo.url}
                     alt={`${logo.name} logo`}
                     className="h-8 sm:h-10 lg:h-12 w-auto object-contain filter brightness-0"
@@ -66,6 +67,7 @@ const Partners: React.FC = () => {
                   className="flex items-center justify-center mx-6 sm:mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
                 >
                   <img
+                    loading="lazy"
                     src={logo.url}
                     alt={`${logo.name} logo`}
                     className="h-8 sm:h-10 lg:h-16 w-auto object-cover filter brightness-0"

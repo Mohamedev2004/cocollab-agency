@@ -46,6 +46,7 @@ const Hero: React.FC = () => {
       <div  className="lg:w-1/2 relative flex items-center justify-center rounded-2xl shadow-sm overflow-hidden min-h-[400px] lg:min-h-[500px]">
         {/* Background Image */}
         <img
+          loading="lazy"
           src="/assets/heroImage.svg" // Placeholder for the new image
           alt="Cocollab Agency Mockup"
           className="absolute inset-0 w-full bg-gradient-to-b from-[#403778] to-[#7666DE] h-full object-contain rounded-2xl"

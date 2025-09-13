@@ -161,6 +161,7 @@ const BrandCard: React.FC<BrandProps> = ({
       {/* Brand logo section */}
       <div  className="relative p-3">
         <img
+          loading="lazy"
           src={logo}
           alt={`Logo of ${name}`}
           className="w-full h-auto object-cover rounded-2xl"

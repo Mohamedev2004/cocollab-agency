@@ -58,6 +58,7 @@ const BrandCard: React.FC<Partial<BrandCardProps>> = (props) => {
       {/* Profile Image with Bookmark */}
       <div className="relative">
         <img
+          loading="lazy"
           src={data.image}
           alt={data.name}
           className="w-full h-auto rounded-2xl object-cover"

@@ -34,7 +34,7 @@ export default function Dashboard({ auth }: DashboardProps) {
     if (user.status === 'Inactive') {
         return (
             <div className="flex flex-col items-center justify-center h-screen gap-4 text-lg font-medium text-white">
-                <p className='text-center text-wrap text-black'>Your account is inactive. Please contact support.</p>
+                <p className='text-center text-wrap text-black dark:text-white'>Your account is inactive. Please contact support.</p>
                 <Link href={route('brand.home')}>
                     <Button variant="default"> <span><ArrowLeft /></span> Back</Button>
                 </Link>

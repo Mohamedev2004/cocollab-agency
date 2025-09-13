@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import {
   Image,
   Plus,
@@ -52,7 +54,7 @@ const dummyPosts = [
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/brands/3.jpg",
+        avatar: "/assets/brands/1.jpg",
       },
     },
     {
@@ -63,7 +65,7 @@ const dummyPosts = [
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/brands/3.jpg",
+        avatar: "/assets/brands/1.jpg",
       },
     },
     {
@@ -74,7 +76,7 @@ const dummyPosts = [
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/brands/3.jpg",
+        avatar: "/assets/brands/1.jpg",
       },
     },
     {
@@ -85,7 +87,7 @@ const dummyPosts = [
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/brands/3.jpg",
+        avatar: "/assets/brands/1.jpg",
       },
     },
     {
@@ -96,7 +98,7 @@ const dummyPosts = [
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/brands/3.jpg",
+        avatar: "/assets/brands/1.jpg",
       },
     },
     {
@@ -107,20 +109,42 @@ const dummyPosts = [
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/brands/3.jpg",
+        avatar: "/assets/brands/1.jpg",
       },
     },
   ];
 
+  const PAGE_SIZE = 3; // 👈 number of posts per batch
+
 const InfluencerPost: React.FC = () => {
+  const [allPosts] = useState<Post[]>(dummyPosts); // pretend backend
   const [posts, setPosts] = useState<Post[]>(dummyPosts);
   const [newCaption, setNewCaption] = useState("");
   const [deleteId, setDeleteId] = useState<number | null>(null);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  
 
   // 👇 New states for image upload + crop
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [croppedImage, setCroppedImage] = useState<File | null>(null);
   const [isCropOpen, setIsCropOpen] = useState(false);
+
+  // Infinite scroll fetch function
+  const fetchMorePosts = () => {
+    const nextPage = page + 1;
+    const start = page * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+
+    const newPosts = allPosts.slice(start, end);
+
+    setPosts((prev) => [...prev, ...newPosts]);
+    setPage(nextPage);
+
+    if (end >= allPosts.length) {
+      setHasMore(false); // no more posts
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -148,7 +172,7 @@ const InfluencerPost: React.FC = () => {
       user: {
         name: "Coca-Cola",
         username: "cocacola",
-        avatar: "/assets/influencers/3.jpg",
+        avatar: "/assets/influencers/1.jpg",
       },
     };
 
@@ -173,7 +197,8 @@ const InfluencerPost: React.FC = () => {
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Create Post</h3>
         <div className="flex items-start gap-4">
           <img
-            src="/assets/brands/3.jpg"
+            loading="lazy"
+            src="/assets/brands/1.jpg"
             alt="Influencer Avatar"
             className="w-12 h-12 rounded-full object-cover flex-shrink-0"
           />
@@ -187,6 +212,7 @@ const InfluencerPost: React.FC = () => {
             />
             {croppedImage && (
               <img
+                loading="lazy"
                 src={URL.createObjectURL(croppedImage)}
                 alt="Preview"
                 className="w-40 h-auto object-cover rounded-xl border"
@@ -216,6 +242,12 @@ const InfluencerPost: React.FC = () => {
       </div>
 
       {/* Posts Feed */}
+      <InfiniteScroll
+        dataLength={posts.length}
+        next={fetchMorePosts}
+        hasMore={hasMore}
+        loader={<p className="text-center py-4">Loading more posts...</p>}
+      >
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {posts.map((post) => (
           <div
@@ -226,6 +258,7 @@ const InfluencerPost: React.FC = () => {
             <div className="flex items-center justify-between p-4">
               <div className="flex items-center gap-3">
                 <img
+                  loading="lazy"
                   src={post.user.avatar}
                   alt={post.user.name}
                   className="w-10 h-10 rounded-full object-cover"
@@ -275,6 +308,7 @@ const InfluencerPost: React.FC = () => {
             {/* Post Image */}
             <ImageZoom>
               <img
+                loading="lazy"
                 src={post.image}
                 alt={post.caption}
                 className="w-full h-auto object-cover"
@@ -306,6 +340,7 @@ const InfluencerPost: React.FC = () => {
           </div>
         ))}
       </div>
+      </InfiniteScroll>
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={deleteId !== null} onOpenChange={() => setDeleteId(null)}>

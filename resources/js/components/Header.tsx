@@ -82,7 +82,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="w-28 sm:w-32">
           <Link href={currentRoutes.home}>
-            <img src="/assets/logo.svg" alt="Logo" className="w-full h-auto" />
+            <img src="/assets/logo.svg" loading="lazy" alt="Logo" className="w-full h-auto" />
           </Link>
         </div>
 

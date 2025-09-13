@@ -73,6 +73,7 @@ const BrandAbout = ({
         </div>
         <div className="grid gap-7 lg:grid-cols-3">
           <img
+            loading="lazy"
             src={mainImage.src}
             alt={mainImage.alt}
             className="size-full max-h-[620px] rounded-xl object-cover lg:col-span-2"
@@ -80,6 +81,7 @@ const BrandAbout = ({
           <div className="flex flex-col gap-7 md:flex-row lg:flex-col">
             <div className="flex flex-col justify-between gap-6 bg-[#8f8eeb] rounded-xl p-7 md:w-1/2 lg:w-auto">
               {/* <img
+                loading="lazy"
                 src={breakout.src}
                 alt={breakout.alt}
                 className="mr-auto h-12"
@@ -95,6 +97,7 @@ const BrandAbout = ({
               </Button>
             </div>
             <img
+              loading="lazy"
               src={secondaryImage.src}
               alt={secondaryImage.alt}
               className="grow basis-0 rounded-xl object-cover md:w-1/2 lg:min-h-0 lg:w-auto"
@@ -107,6 +110,7 @@ const BrandAbout = ({
             {companies.map((company, idx) => (
               <div className="flex items-center gap-3" key={company.src + idx}>
                 <img
+                  loading="lazy"
                   src={company.src}
                   alt={company.alt}
                   className="h-6 w-auto md:h-8"

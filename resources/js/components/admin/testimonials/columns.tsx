@@ -74,6 +74,7 @@ export const createColumns = (
             src={`/storage/${row.original.testimonial_image}`}
             alt={row.original.testimonial_name}
             className="w-12 h-12 rounded object-cover"
+            loading="lazy"
           />
         </ImageZoom>
       ),

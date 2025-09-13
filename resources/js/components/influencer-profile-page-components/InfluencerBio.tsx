@@ -13,7 +13,7 @@ const InfluencerBio = () => {
             About Me
           </span>
         </div>
-      <p className="text-sm text-gray-600 font-light leading-relaxed">{description}</p>
+      <p className="text-sm text-gray-600 font-light leading-relaxed text-justify">{description}</p>
       
       <div className="flex flex-col space-y-3 mt-6 text-gray-600">
         <div className="flex items-center gap-2">
